@@ -1,10 +1,62 @@
-div.wrapper
-{
-    background-color: black;
+@import url('https://fonts.cdnfonts.com/css/videotype');
 
-    @media (min-width: 992px)
+.lg-wrapper {
+  background-color: black;
+  width:100%;
+  height: 80px;
+  width: 100%;
+}
+
+.brand
 {
-    background-color: red;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
+  font-size: 40px;
+  color: white;
+  margin-left: 20px;
+
+  font-family: 'Videotype', sans-serif;
 }
+
+.xs-wrapper
+{
+    background-color: #222222;
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 10;
+
+    width: 160px;
+    height: 80px;
+
+    & .button
+    {
+      display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+    font-size: 50px;
+    font-weight: bold;
+    }
+    
+    &.locked
+    {
+      background-color: black;
+    }
 }
+
+
+.brand .color1
+{
+  color: white;
+}
+.brand .color2
+{
+  color: #cccccc;
+}
+
+
 
