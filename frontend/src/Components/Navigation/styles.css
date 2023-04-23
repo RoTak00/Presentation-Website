@@ -1,0 +1,7 @@
+div.wrapper {
+  background-color: black; }
+  @media (min-width: 992px) {
+    div.wrapper {
+      background-color: red; } }
+
+/*# sourceMappingURL=styles.css.map */
