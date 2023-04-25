@@ -1,0 +1,8 @@
+.home-showcase {
+    padding: 0;
+    
+    & > div.element {
+        height: calc((100vh - 80px) / 2);
+        padding: 0;
+    }
+}

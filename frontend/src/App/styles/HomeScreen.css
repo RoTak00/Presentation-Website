@@ -1,0 +1,7 @@
+.home-showcase {
+  padding: 0; }
+  .home-showcase > div.element {
+    height: calc((100vh - 80px) / 2);
+    padding: 0; }
+
+/*# sourceMappingURL=HomeScreen.css.map */

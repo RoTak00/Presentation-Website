@@ -1,9 +1,8 @@
 @import url("https://fonts.cdnfonts.com/css/videotype");
-.lg-wrapper {
+.wrapper {
   background-color: black;
   width: 100%;
-  height: 80px;
-  width: 100%; }
+  height: 80px; }
 
 .brand {
   display: flex;
@@ -14,29 +13,9 @@
   color: white;
   margin-left: 20px;
   font-family: 'Videotype', sans-serif; }
-
-.xs-wrapper {
-  background-color: #222222;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  width: 160px;
-  height: 80px; }
-  .xs-wrapper .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    font-size: 50px;
-    font-weight: bold; }
-  .xs-wrapper.locked {
-    background-color: black; }
-
-.brand .color1 {
-  color: white; }
-
-.brand .color2 {
-  color: #cccccc; }
+  @media (max-width: 992px) {
+    .brand {
+      justify-content: center;
+      margin-left: 0px; } }
 
 /*# sourceMappingURL=styles.css.map */
