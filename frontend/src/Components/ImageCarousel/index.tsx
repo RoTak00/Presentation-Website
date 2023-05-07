@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import "./styles.css";
 
@@ -12,6 +12,8 @@ type Props = {
 const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [textVisible, setTextVisible] = useState<boolean>(false);
+
+  const showTextAfterStartInterval = useRef<NodeJS.Timeout | null>(null);
 
   /*const [intervalPaused, setIntervalPaused] = useState<boolean>(false);
   let loadingBarInterval: React.MutableRefObject<NodeJS.Timer | undefined> =
@@ -44,6 +46,13 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
       clearInterval(loadingBarInterval.current);
     };
   }, [delay, intervalPaused]);*/
+
+  //show text after 2 seconds (maybe the user doesn't know they can see it)
+  useEffect(() => {
+    showTextAfterStartInterval.current = setTimeout(() => {
+      setTextVisible(true);
+    }, 2000);
+  });
 
   const getImageSrc = (name: string) => {
     return "/images/" + name;
@@ -86,7 +95,11 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
         <>
           <div
             className="description-text"
-            onClick={() => setTextVisible((old) => !old)}
+            onClick={() => {
+              setTextVisible((old) => !old);
+              if (showTextAfterStartInterval.current !== null)
+                clearInterval(showTextAfterStartInterval.current);
+            }}
           >
             <div className="inner">
               <h2>{images[currentImageIndex].title}</h2>

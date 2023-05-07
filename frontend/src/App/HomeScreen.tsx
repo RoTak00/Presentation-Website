@@ -3,8 +3,8 @@ import ImageCarousel from "../Components/ImageCarousel";
 import "./styles/HomeScreen.css";
 
 import { CarouselImageType } from "../Utils/Types";
-
 import { lipsum } from "../Utils/Types";
+
 const HomeScreen = () => {
   const images: CarouselImageType[] = [
     { name: "1.jpeg", title: "Games of Science", description: lipsum },
@@ -22,6 +22,13 @@ const HomeScreen = () => {
     <>
       <NavigationBar />
       <ImageCarousel images={images} />
+      <div
+        style={{
+          height: "500vh",
+          backgroundImage: `url(/images/background.png)`,
+          backgroundRepeat: "repeat-y",
+        }}
+      ></div>
     </>
   );
 };

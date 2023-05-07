@@ -13,7 +13,7 @@ const NavigationBar = () => {
     <div className="wrapper">
       <Row className="h-100">
         <Col lg="3" className="brand">
-          <BrandName text={"Robert\xA0Takacs"} delay={250} />
+          <BrandName text={"Robert\xA0Takacs   "} delay={250} />
         </Col>
       </Row>
     </div>
