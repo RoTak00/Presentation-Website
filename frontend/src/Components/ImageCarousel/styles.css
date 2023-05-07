@@ -103,4 +103,27 @@
           margin-top: 25px;
           font-size: revert; } }
 
+.carousel-title-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeeebb;
+  transition: height 0.25 ease; }
+  .carousel-title-box--hover {
+    padding-top: 10px;
+    height: calc(10% + 10px);
+    transition: all 0.25s ease;
+    cursor: pointer; }
+  .carousel-title-box > h2 {
+    color: #444444;
+    transition: all 0.25 ease; }
+    .carousel-title-box > h2.hover {
+      color: #000000;
+      transition: all 0.25 ease; }
+
 /*# sourceMappingURL=styles.css.map */

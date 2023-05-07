@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 import "./styles.css";
 
@@ -12,8 +12,7 @@ type Props = {
 const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [textVisible, setTextVisible] = useState<boolean>(false);
-
-  const showTextAfterStartInterval = useRef<NodeJS.Timeout | null>(null);
+  const [titleBoxHovering, setTitleBoxHovering] = useState<boolean>(false);
 
   /*const [intervalPaused, setIntervalPaused] = useState<boolean>(false);
   let loadingBarInterval: React.MutableRefObject<NodeJS.Timer | undefined> =
@@ -48,11 +47,11 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
   }, [delay, intervalPaused]);*/
 
   //show text after 2 seconds (maybe the user doesn't know they can see it)
-  useEffect(() => {
+  /*useEffect(() => {
     showTextAfterStartInterval.current = setTimeout(() => {
       setTextVisible(true);
-    }, 2000);
-  });
+    }, 5000);
+  });*/
 
   const getImageSrc = (name: string) => {
     return "/images/" + name;
@@ -61,11 +60,11 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
   return (
     <div className="carousel">
       <img
-        src={getImageSrc(images[currentImageIndex].name)}
+        src={getImageSrc(images[currentImageIndex].imageName ?? "")}
         alt=""
         className="image"
         onClick={() => setTextVisible((old) => !old)}
-        style={{ objectPosition: images[currentImageIndex].position }}
+        style={{ objectPosition: images[currentImageIndex].imagePosition }}
       />
 
       <div className="arrowLeft">
@@ -95,11 +94,7 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
         <>
           <div
             className="description-text"
-            onClick={() => {
-              setTextVisible((old) => !old);
-              if (showTextAfterStartInterval.current !== null)
-                clearInterval(showTextAfterStartInterval.current);
-            }}
+            onClick={() => setTextVisible((old) => !old)}
           >
             <div className="inner">
               <h2>{images[currentImageIndex].title}</h2>
@@ -109,7 +104,23 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
             </div>
           </div>
         </>
-      ) : null}
+      ) : (
+        <>
+          <div
+            className={
+              "carousel-title-box " +
+              (titleBoxHovering ? "carousel-title-box--hover" : "")
+            }
+            onClick={() => setTextVisible((old) => !old)}
+            onMouseEnter={() => setTitleBoxHovering(true)}
+            onMouseLeave={() => setTitleBoxHovering(false)}
+          >
+            <h2 className={titleBoxHovering ? "hover" : ""}>
+              {images[currentImageIndex].title}
+            </h2>
+          </div>
+        </>
+      )}
       {/*<div
         className="loadingBar"
         style={{ width: loadingBarWidth.toString() + "%" }}
