@@ -5,6 +5,7 @@ import "./styles/HomeScreen.css";
 import { CarouselImageType } from "../Utils/Types";
 import { lipsum } from "../Utils/Types";
 import ProjectMenu from "../Components/ProjectMenu";
+import ContactMenu from "../Components/ContactMenu";
 
 const HomeScreen = () => {
   const images: CarouselImageType[] = [
@@ -31,6 +32,7 @@ const HomeScreen = () => {
         <NavigationBar />
         <ImageCarousel images={images} />
         <ProjectMenu />
+        <ContactMenu />
       </div>
     </>
   );
