@@ -28,6 +28,16 @@ const ProjectMenu = () => {
     },
   ]);
 
+  const [modalShown, setModalShown] = useState<number | null>(null);
+
+  const handleModalClosed = () => {
+    setModalShown(null);
+  };
+
+  const handleModalOpened = (modalIndex: number) => {
+    setModalShown(modalIndex);
+  };
+
   return (
     <div>
       <Row className="project-title-row">
@@ -36,8 +46,13 @@ const ProjectMenu = () => {
         </Col>
       </Row>
       <Row className="project-menu-row">
-        {projects?.map((el) => (
-          <ProjectCell data={el} />
+        {projects?.map((el, index) => (
+          <ProjectCell
+            data={el}
+            showModal={index === modalShown}
+            handleModalClose={handleModalClosed}
+            handleModalOpened={() => handleModalOpened(index)}
+          />
         ))}
       </Row>
     </div>

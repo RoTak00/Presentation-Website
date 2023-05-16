@@ -7,6 +7,7 @@ type CarouselImageType = {
 
 type ProjectType = {
   imageName?: string;
+  wideImageName?: string;
   title: string;
   description?: string;
   link_github?: string;
