@@ -48,6 +48,7 @@ const ProjectMenu = () => {
       <Row className="project-menu-row">
         {projects?.map((el, index) => (
           <ProjectCell
+            key={"project-" + index}
             data={el}
             showModal={index === modalShown}
             handleModalClose={handleModalClosed}

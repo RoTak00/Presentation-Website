@@ -24,7 +24,6 @@ const HomeScreen = () => {
     <>
       <div
         style={{
-          height: "500vh",
           backgroundImage: `url(/images/background.png)`,
           backgroundRepeat: "repeat-y",
         }}

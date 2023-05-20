@@ -11,3 +11,31 @@
         font-family: 'Videotype', sans-serif;
     }
 }
+
+.contact-form-wrapper
+{
+    padding: 3em;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #21038122;
+
+    min-height: 30vh;
+}
+.contact-form-floating-label
+{
+    font-size: 18px;
+}
+
+textarea.contact-message
+{
+    height: 25vh;
+}
+
+.form-headline
+{
+    font-size:25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+}
