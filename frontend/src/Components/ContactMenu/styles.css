@@ -28,4 +28,7 @@ textarea.contact-message {
   justify-content: center;
   padding-bottom: 1em; }
 
+.contact-form-wrapper h3, .contact-form-wrapper button {
+  font-family: 'Videotype', sans-serif; }
+
 /*# sourceMappingURL=styles.css.map */

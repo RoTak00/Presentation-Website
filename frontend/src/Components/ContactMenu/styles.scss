@@ -39,3 +39,11 @@ textarea.contact-message
     justify-content: center;
     padding-bottom: 1em;
 }
+
+.contact-form-wrapper
+{
+    & h3, & button
+    {
+        font-family: 'Videotype', sans-serif;
+    }
+}
