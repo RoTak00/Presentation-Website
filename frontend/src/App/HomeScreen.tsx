@@ -1,11 +1,14 @@
 import NavigationBar from "../Components/Navigation";
 import ImageCarousel from "../Components/ImageCarousel";
 import "./styles/HomeScreen.css";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 import { CarouselImageType } from "../Utils/Types";
 import { lipsum } from "../Utils/Types";
 import ProjectMenu from "../Components/ProjectMenu";
 import ContactMenu from "../Components/ContactMenu";
+import ContactIcons from "../Components/ContactIcons";
+import CustomFooter from "../Components/Footer";
 
 const HomeScreen = () => {
   const images: CarouselImageType[] = [
@@ -32,6 +35,8 @@ const HomeScreen = () => {
         <ImageCarousel images={images} />
         <ProjectMenu />
         <ContactMenu />
+        <ContactIcons />
+        <CustomFooter />
       </div>
     </>
   );

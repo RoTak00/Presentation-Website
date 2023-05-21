@@ -3,21 +3,19 @@ import { Row, Col } from "react-bootstrap";
 
 import "./styles.css";
 
-import BrandName from "../BrandName";
 import useMediaQuery from "../../Utils/MediaQuery";
 
-const NavigationBar = () => {
+const CustomFooter = () => {
   const lg = useMediaQuery("(min-width: 992px)");
 
   return (
-    <div className="navbar-wrapper">
+    <div className="footer-wrapper">
       <Row className="h-100">
-        <Col xs={12} lg={3} className="brand">
-          <BrandName text={"Robert\xA0Takacs   "} delay={250} />
-        </Col>
+        <Col xs="6">Created by Takacs Robert</Col>
+        <Col xs="6">All rights reserved {new Date().getFullYear()}</Col>
       </Row>
     </div>
   );
 };
 
-export default NavigationBar;
+export default CustomFooter;

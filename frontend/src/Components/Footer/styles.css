@@ -1,0 +1,12 @@
+.footer-wrapper {
+  background-color: black;
+  width: 100%;
+  height: 15vh; }
+  .footer-wrapper div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888888;
+    font-size: 18px; }
+
+/*# sourceMappingURL=styles.css.map */

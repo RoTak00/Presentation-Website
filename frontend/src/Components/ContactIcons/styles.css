@@ -1,0 +1,27 @@
+.contact-icons-title-row {
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .contact-icons-title-row h2 {
+    text-align: center;
+    font-size: 5vh;
+    font-family: 'Videotype', sans-serif; }
+
+.contact-icons-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3em; }
+  .contact-icons-wrapper > div {
+    display: flex;
+    justify-content: center; }
+  .contact-icons-wrapper img {
+    height: 5em;
+    width: 5em; }
+    @media (max-width: 992px) {
+      .contact-icons-wrapper img {
+        height: 3em;
+        width: 3em; } }
+
+/*# sourceMappingURL=styles.css.map */
