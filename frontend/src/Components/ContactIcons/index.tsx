@@ -16,7 +16,7 @@ const ContactIcons = () => {
             target="_blank"
             rel="noreferrer noindex nofollow"
           >
-            <img src="/icons/github.png" alt="Github" />
+            <img src="/icons/git.png" alt="Github" />
           </a>
         </Col>
         <Col xs="4">
@@ -25,7 +25,7 @@ const ContactIcons = () => {
             target="_blank"
             rel="noreferrer noindex nofollow"
           >
-            <img src="/icons/instagram.png" alt="Instagram" />
+            <img src="/icons/ig.png" alt="Instagram" />
           </a>
         </Col>
         <Col xs="4">
@@ -34,7 +34,7 @@ const ContactIcons = () => {
             target="_blank"
             rel="noreferrer noindex nofollow"
           >
-            <img src="/icons/linkedin.png" alt="Linkedin" />
+            <img src="/icons/in.png" alt="Linkedin" />
           </a>
         </Col>
       </Row>

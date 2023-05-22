@@ -99,7 +99,11 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
             <div className="inner">
               <h2>{images[currentImageIndex].title}</h2>
               <div className="description">
-                {images[currentImageIndex].description}
+                {images[currentImageIndex].description
+                  ?.split("<br>")
+                  .map((text) => (
+                    <p>{text}</p>
+                  ))}
               </div>
             </div>
           </div>

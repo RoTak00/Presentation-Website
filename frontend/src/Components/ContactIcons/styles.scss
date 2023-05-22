@@ -25,13 +25,11 @@
     }
 
     & img{
-        height: 5em;
-        width: 5em;
 
         @media(max-width: 992px)
         {
-            height: 3em;
-            width: 3em;
+            height: 50px;
+            width: 50px;
         }
     }
 }

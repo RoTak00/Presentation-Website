@@ -7,22 +7,22 @@ import { useState } from "react";
 const ProjectMenu = () => {
   const [projects] = useState<ProjectType[] | null>([
     {
-      imageName: "1.jpeg",
+      imageName: "carousel-volunteering.jpg",
       title: "Project 1",
       description: lipsum,
     },
     {
-      imageName: "2.jpeg",
+      imageName: "carousel-future.jpg",
       title: "Project 2",
       description: lipsum,
     },
     {
-      imageName: "3.jpeg",
+      imageName: "carousel-personal.jpg",
       title: "Project 3",
       description: lipsum,
     },
     {
-      imageName: "4.jpeg",
+      imageName: "carousel-tech.jpg",
       title: "Project 4",
       description: lipsum,
     },

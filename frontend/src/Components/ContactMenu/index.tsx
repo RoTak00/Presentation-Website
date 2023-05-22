@@ -157,7 +157,7 @@ const ContactMenu = () => {
 
           <Button
             type="submit"
-            className="btn btn-dark d-flex w-50 mx-auto justify-content-center mt-5"
+            className="btn btn-dark button-send d-flex w-50 mx-auto justify-content-center mt-5"
             disabled={buttonDisabled}
           >
             {!formBodySubmitted

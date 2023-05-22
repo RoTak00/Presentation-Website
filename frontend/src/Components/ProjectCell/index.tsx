@@ -67,7 +67,6 @@ const ProjectCell: React.FC<Props> = ({
         <Modal.Body className="project-modal-description">
           <div>{data.description}</div>
         </Modal.Body>
-        <hr />
         <div className="project-modal-buttons">
           <Button
             href="#"

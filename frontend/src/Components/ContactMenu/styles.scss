@@ -47,3 +47,17 @@ textarea.contact-message
         font-family: 'Videotype', sans-serif;
     }
 }
+
+.button-send{
+    --bs-btn-bg: #280381 !important;
+        --bs-btn-border-color: #190152 !important;
+
+        --bs-btn-hover-bg: #3200a8 !important;
+        --bs-btn-hover-border-color: #190152 !important;
+
+        --bs-btn-active-bg: #552db3 !important;
+        --bs-btn-active-border-color: #3200a8 !important;
+
+        --bs-btn-disabled-bg: #986ff888 !important;
+        --bs-btn-disabled-border-color: #4a13ca !important;
+}

@@ -16,12 +16,9 @@
   .contact-icons-wrapper > div {
     display: flex;
     justify-content: center; }
-  .contact-icons-wrapper img {
-    height: 5em;
-    width: 5em; }
-    @media (max-width: 992px) {
-      .contact-icons-wrapper img {
-        height: 3em;
-        width: 3em; } }
+  @media (max-width: 992px) {
+    .contact-icons-wrapper img {
+      height: 50px;
+      width: 50px; } }
 
 /*# sourceMappingURL=styles.css.map */

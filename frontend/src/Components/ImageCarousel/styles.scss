@@ -48,12 +48,12 @@
     
     & > span {
         font-size: 100px;
-        color: #ffffff66;
+        color: #280381aa;
         font-weight: bolder;
 
         &:hover
         {
-            color: #ffffff;
+            color: #280381;
             transition: all 0.2s ease;
         }
     }
@@ -80,20 +80,17 @@
             height: 50px;
         }
 
-    font-size: 100px;
-    color: #ffffff66;
-    font-weight: bolder;
 
 
     
     & > span {
         font-size: 100px;
-        color: #ffffff66;
+        color: #280381aa;
         font-weight: bolder;
 
         &:hover
         {
-            color: #ffffff;
+            color: #280381;
             transition: all 0.2s ease;
         }
     }
@@ -111,6 +108,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    & h2 {
+        color: #280381;
+        font-family: Videotype, sans-serif;
+    } 
     &>.inner{
         width: 75%;
         height: 90%;
@@ -139,18 +141,28 @@
         & > .description {
             margin-top: 50px;
             text-align: justify;
-            font-size: 20px;
+            font-size: 21px;
 
             flex-grow: 1;
 
             display: flex;
+            height: 100%;
+            text-indent: none;
             align-items: center;
+            flex-direction: column;
 
 
             @media(max-width:992px)
         {
             margin-top: 25px;
-            font-size: revert;
+            font-size: 14px;
+            
+        }
+        @media(max-width:1200px)
+        {
+            margin-top: 25px;
+            font-size: 17px;
+            
         }
         }
 
@@ -183,10 +195,11 @@
 
     & > h2
     {
-        color: #444444;
+        color: #280381cc;
+        font-family: Videotype, sans-serif;
         &.hover
         {
-            color: #000000;
+            color: #280381;
             transition: all 0.25 ease;
         }
 
