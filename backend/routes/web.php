@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserMessageController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +15,11 @@ use App\Http\Controllers\UserMessageController;
 |
 */
 
-Route::get('/api/0743283safngsrgnj88348gbfdw7534t', function () {
-    return json_encode(["token"=>csrf_token()]);
-});
 
 Route::post('/api/contact', [UserMessageController::class, 'store']);
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
+
+Route::resource('projects', ProjectController::class)->middleware("auth");

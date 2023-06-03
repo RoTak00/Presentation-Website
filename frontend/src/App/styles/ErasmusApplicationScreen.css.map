@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,IACA;EACI,YAAY,EAAC,YAAY",
+"sources": ["ErasmusApplicationScreen.scss"],
+"names": [],
+"file": "ErasmusApplicationScreen.css"
+}
