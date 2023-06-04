@@ -2,31 +2,65 @@ import { Col, Row } from "react-bootstrap";
 import { ProjectType, lipsum } from "../../Utils/Types";
 import ProjectCell from "../ProjectCell";
 import "./styles.css";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { getProjects } from "../../Utils/API";
 
 const ProjectMenu = () => {
-  const [projects] = useState<ProjectType[] | null>([
+  const [projects, setProjects] = useState<ProjectType[] | null>([
     {
-      imageName: "carousel-volunteering.jpg",
-      title: "Project 1",
-      description: lipsum,
+      imageName: "loading.png",
+      title: "Loading...",
+      description: "",
     },
     {
-      imageName: "carousel-future.jpg",
-      title: "Project 2",
-      description: lipsum,
+      imageName: "loading.png",
+      title: "Loading...",
+      description: "",
     },
     {
-      imageName: "carousel-personal.jpg",
-      title: "Project 3",
-      description: lipsum,
+      imageName: "loading.png",
+      title: "Loading...",
+      description: "",
     },
     {
-      imageName: "carousel-tech.jpg",
-      title: "Project 4",
-      description: lipsum,
+      imageName: "loading.png",
+      title: "Loading...",
+      description: "",
     },
   ]);
+
+  const loadProjects = useCallback(async () => {
+    let projects = await getProjects(4).then((res) => res?.data);
+
+    if (!projects) {
+      console.log("oof");
+      return;
+    }
+    console.log(projects.data);
+
+    let numeric_array_projects = [];
+    for (var item in projects.data) {
+      numeric_array_projects.push(projects.data[item]);
+    }
+
+    let outputProjects = numeric_array_projects.map((el: any) => {
+      return {
+        imageName: el.image,
+        title: el.title,
+        link_project: el.link,
+        description: el.description,
+      };
+    });
+
+    setProjects(outputProjects);
+    setProjectsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    loadProjects();
+  }, [loadProjects]);
+
+  const [projectsLoaded, setProjectsLoaded] = useState<boolean>(false);
 
   const [modalShown, setModalShown] = useState<number | null>(null);
 
@@ -35,6 +69,7 @@ const ProjectMenu = () => {
   };
 
   const handleModalOpened = (modalIndex: number) => {
+    if (!projectsLoaded) return;
     setModalShown(modalIndex);
   };
 
@@ -53,6 +88,7 @@ const ProjectMenu = () => {
             showModal={index === modalShown}
             handleModalClose={handleModalClosed}
             handleModalOpened={() => handleModalOpened(index)}
+            disabled={projectsLoaded}
           />
         ))}
       </Row>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { UserMessageType } from "./Types";
+import { API_PATH } from "./Helpers";
 
 const postUserMessage = async (message: UserMessageType) => {
   const api = axios.create({
@@ -9,7 +10,7 @@ const postUserMessage = async (message: UserMessageType) => {
   });
 
   try {
-    await api.post("http://localhost:8000/api/contact", message);
+    await api.post(`${API_PATH}/contact`, message);
     return true;
   } catch (error) {
     console.error("Error posting user message:", error);
@@ -17,4 +18,17 @@ const postUserMessage = async (message: UserMessageType) => {
   }
 };
 
-export { postUserMessage };
+const getProjects = async (limit?: number) => {
+  try {
+    //console.log(`${API_PATH}/projects${limit ? `/${limit}` : ""}`);
+    const response = await axios.get(
+      `${API_PATH}/projects${limit ? `/${limit}` : ""}`
+    );
+    return response;
+  } catch (error) {
+    console.error("Error getting projects:", error);
+    return null;
+  }
+};
+
+export { postUserMessage, getProjects };

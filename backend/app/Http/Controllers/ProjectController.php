@@ -30,7 +30,7 @@ class ProjectController extends Controller
 
         foreach($projects as $item)
         {
-            $item->image = 'https://'.$_SERVER['HTTP_HOST']."/images/projects/".$item->image;
+            $item->image = 'http://'.$_SERVER['HTTP_HOST']."/images/projects/".$item->image;
         }
 
         return response()->json(['data'=>$projects, 'count'=>count($projects)]);

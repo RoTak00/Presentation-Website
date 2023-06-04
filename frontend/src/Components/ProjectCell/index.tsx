@@ -8,10 +8,7 @@ type Props = {
   showModal: boolean;
   handleModalClose: () => void;
   handleModalOpened: () => void;
-};
-
-const getImageSrc = (name: string) => {
-  return "/images/" + name;
+  disabled: boolean;
 };
 
 const ProjectCell: React.FC<Props> = ({
@@ -19,6 +16,7 @@ const ProjectCell: React.FC<Props> = ({
   showModal,
   handleModalClose,
   handleModalOpened,
+  disabled,
 }) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
@@ -33,7 +31,7 @@ const ProjectCell: React.FC<Props> = ({
         onMouseLeave={() => setIsHovering(false)}
         onClick={() => handleModalOpened()}
       >
-        <img src={getImageSrc(data.imageName ?? "")} alt={data.title}></img>
+        <img src={data.imageName ?? ""} alt={data.title}></img>
 
         {isHovering ? (
           <div className="project-menu-hover">Find out more!</div>
@@ -59,7 +57,7 @@ const ProjectCell: React.FC<Props> = ({
         <div className="project-modal-image-wrapper">
           <div>
             <img
-              src={getImageSrc(data.wideImageName ?? data.imageName ?? "")}
+              src={data.wideImageName ?? data.imageName ?? ""}
               alt={data.title}
             ></img>
           </div>
@@ -69,7 +67,7 @@ const ProjectCell: React.FC<Props> = ({
         </Modal.Body>
         <div className="project-modal-buttons">
           <Button
-            href="#"
+            href={data.link_project ?? "#"}
             target="_blank"
             variant="primary"
             className="button-checkitout"
