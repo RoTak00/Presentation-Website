@@ -9,7 +9,7 @@
         }
     </style>
     <h1>Create Project</h1>
-    <form method="POST" action={{ route('projects.store') }} enctype="multipart/form-data">
+    <form method="POST" action={{ route('projects.store') }} enctype="multipart/form-data" style="margin-bottom: 15px;">
         @csrf
         <input type="text" name="title" placeholder="Title" required />
         <input type="text" name="link" placeholder="Link" required />
@@ -23,4 +23,6 @@
             <button type="submit"> Adăugare </button>
         </div>
     </form>
+
+    <a href="{{ route('projects.index') }}"> Back </a>
 @endsection

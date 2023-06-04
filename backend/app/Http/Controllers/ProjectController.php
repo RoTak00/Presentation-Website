@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\ResponseFactory;
 use App\Models\Project;
+
+
+use Illuminate\Support\Facades\File;
 
 class ProjectController extends Controller
 {
@@ -12,8 +16,27 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all()->reverse();
+        return view('projects.index', ['projects'=>$projects]);
     }
+
+    public function api_get($limit = null)
+    {
+        $projects = null;
+        if($limit == null)
+            $projects = Project::all()->reverse();
+        else
+            $projects = Project::all()->take($limit)->reverse();
+
+        foreach($projects as $item)
+        {
+            $item->image = 'https://'.$_SERVER['HTTP_HOST']."/images/projects/".$item->image;
+        }
+
+        return response()->json(['data'=>$projects, 'count'=>count($projects)]);
+
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,9 +51,14 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-
         $alias = GenerateAlias($request->title);
-        $imageName = uniqid() . "-" . $alias . "." . $request->image->extension();
+        $imageName = "project-" . $alias . "." . $request->image->extension();
+        $index = 1;
+        while(File::exists(public_path("images/projects/".$imageName)))
+        {
+            $imageName = "project-" . $alias . "-" . $index . "." . $request->image->extension();
+            $index += 1;
+        }
         $request->image->move(public_path("images/projects"), $imageName);
 
         $newProject = new Project;
@@ -57,7 +85,8 @@ class ProjectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('projects.edit', ['project'=>$project]);
     }
 
     /**
@@ -65,7 +94,36 @@ class ProjectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        $alias = GenerateAlias($request->title);
+
+        $imageName = $project->image;
+        if($request->image != null)
+        {
+            $old_path = public_path("images/projects/".$imageName);
+            if(File::exists($old_path))
+            {
+                File::delete($old_path);
+            }
+            $imageName = "project-" . $alias . "." . $request->image->extension();
+            $index = 1;
+            while(File::exists(public_path("images/projects/".$imageName)))
+            {
+                $imageName = "project-" . $alias . "-" . $index . "." . $request->image->extension();
+                $index += 1;
+            }
+            $request->image->move(public_path("images/projects/"), $imageName);
+        }
+
+        $project->title = $request->title;
+        $project->description = $request->description;
+        $project->image = $imageName;
+        $project->link = $request->link;
+
+        $project->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -73,6 +131,16 @@ class ProjectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        $old_path = public_path("images/projects/".$project->image);
+        if(File::exists($old_path))
+        {
+            File::delete($old_path);
+        }
+
+        $project->delete();
+
+        return redirect('projects');
     }
 }

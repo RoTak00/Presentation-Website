@@ -28,4 +28,10 @@ class UserMessageController extends Controller
         
         return ["success"=> true];
     }
+
+    public function index()
+    {
+        $messages = UserMessage::all();
+        return view('messages.index', ['messages' => $messages]);
+    }
 }
