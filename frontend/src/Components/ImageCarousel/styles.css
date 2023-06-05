@@ -1,139 +1,41 @@
 .carousel {
   height: calc(90vh - 80px);
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   @media (max-width: 992px) {
     .carousel {
       height: calc(100vh - 80px); } }
-  .carousel > img.image {
+  .carousel > div.carousel-image-wrapper {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center; }
+    position: relative;
+    overflow: hidden; }
+    .carousel > div.carousel-image-wrapper > img.image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center; }
+      .carousel > div.carousel-image-wrapper > img.image--fadein {
+        animation: fadein 0.4s forwards ease-out; }
+@keyframes fadein {
+  0% {
+    opacity: 0.7; }
+  100% {
+    opacity: 1; } }
+.nodisplay {
+  display: none; }
 
-.loadingBar {
+.carousel > .carousel-brand {
   position: absolute;
-  z-index: 10;
-  bottom: 0;
-  height: 10px;
-  background-color: black; }
-
-.arrowLeft {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: 50px;
-  cursor: pointer;
-  width: 50px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  @media (max-width: 992px) {
-    .arrowLeft {
-      top: 80%;
-      height: 50px; } }
-  .arrowLeft > span {
-    font-size: 100px;
-    color: #280381aa;
-    font-weight: bolder; }
-    .arrowLeft > span:hover {
-      color: #280381;
-      transition: all 0.2s ease; }
-
-.arrowRight {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  right: 50px;
-  width: 50px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer; }
-  @media (max-width: 992px) {
-    .arrowRight {
-      top: 80%;
-      height: 50px; } }
-  .arrowRight > span {
-    font-size: 100px;
-    color: #280381aa;
-    font-weight: bolder; }
-    .arrowRight > span:hover {
-      color: #280381;
-      transition: all 0.2s ease; }
-
-.description-text {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  background-color: #eeeeeebb;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .description-text h2 {
-    color: #280381;
-    font-family: Videotype, sans-serif; }
-  .description-text > .inner {
-    width: 75%;
-    height: 90%;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto; }
-    @media (max-width: 992px) {
-      .description-text > .inner {
-        width: 100%;
-        height: 100%; } }
-    .description-text > .inner > h2 {
-      text-align: center;
-      font-size: 50px; }
-      @media (max-width: 992px) {
-        .description-text > .inner > h2 {
-          font-size: 25px; } }
-    .description-text > .inner > .description {
-      margin-top: 50px;
-      text-align: justify;
-      font-size: 21px;
-      flex-grow: 1;
-      display: flex;
-      height: 100%;
-      text-indent: none;
-      align-items: center;
-      flex-direction: column; }
-      @media (max-width: 992px) {
-        .description-text > .inner > .description {
-          margin-top: 25px;
-          font-size: 14px; } }
-      @media (max-width: 1200px) {
-        .description-text > .inner > .description {
-          margin-top: 25px;
-          font-size: 17px; } }
-
-.carousel-title-box {
-  position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
-  right: 0;
-  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eeeeeebb;
-  transition: height 0.25 ease; }
-  .carousel-title-box--hover {
-    padding-top: 10px;
-    height: calc(10% + 10px);
-    transition: all 0.25s ease;
-    cursor: pointer; }
-  .carousel-title-box > h2 {
-    color: #280381cc;
-    font-family: Videotype, sans-serif;
-    transition: all 0.25 ease; }
-    .carousel-title-box > h2.hover {
-      color: #280381;
-      transition: all 0.25 ease; }
+  font-size: 100px;
+  color: #280381;
+  font-family: Videotype; }
 
 /*# sourceMappingURL=styles.css.map */

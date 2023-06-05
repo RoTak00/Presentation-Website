@@ -86,7 +86,7 @@ const HomeScreen = () => {
         }}
       >
         <NavigationBar />
-        <ImageCarousel images={images} />
+        <ImageCarousel images={images} delay={3000} />
         <ProjectMenu />
         <ContactMenu />
         <ContactIcons />
