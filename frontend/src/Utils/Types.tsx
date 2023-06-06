@@ -1,7 +1,5 @@
 type CarouselImageType = {
   imageName?: string;
-  title: string;
-  description?: string;
   imagePosition?: "top" | "center" | "bottom";
 };
 

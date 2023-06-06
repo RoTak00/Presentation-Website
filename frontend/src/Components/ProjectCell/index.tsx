@@ -1,7 +1,9 @@
 import { Button, Col, Modal, Row } from "react-bootstrap";
 import { ProjectType } from "../../Utils/Types";
 import "./styles.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useIsInViewport from "../../Utils/IsInViewport";
+import useFadeIn from "../../Utils/fadeIn";
 
 type Props = {
   data: ProjectType;
@@ -9,6 +11,8 @@ type Props = {
   handleModalClose: () => void;
   handleModalOpened: () => void;
   disabled: boolean;
+  cellIndex: number;
+  cellArrayLength: number;
 };
 
 const ProjectCell: React.FC<Props> = ({
@@ -17,19 +21,35 @@ const ProjectCell: React.FC<Props> = ({
   handleModalClose,
   handleModalOpened,
   disabled,
+  cellIndex,
+  cellArrayLength,
 }) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
+  const cellRef = useRef(null);
+  const isCellInViewport = useIsInViewport(cellRef);
+  const animationClasses = useFadeIn(
+    isCellInViewport,
+    "toFadeIn",
+    "fadingInLeft"
+  );
+
+  const animationDelay = `${(cellArrayLength - cellIndex + 1) * 0.2}s`;
   return (
     <>
       <Col
         xs="6"
         lg="3"
-        className="project-menu-cell"
-        style={{ paddingLeft: 0, paddingRight: 0 }}
+        className={`project-menu-cell ${animationClasses}`}
+        style={{
+          paddingLeft: 0,
+          paddingRight: 0,
+          animationDelay: animationDelay,
+        }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         onClick={() => handleModalOpened()}
+        ref={cellRef}
       >
         <img src={data.imageName ?? ""} alt={data.title}></img>
 

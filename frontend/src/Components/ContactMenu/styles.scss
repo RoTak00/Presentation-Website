@@ -1,6 +1,5 @@
 .contact-title-row
 {
-    height: 10vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,6 +8,8 @@
         text-align: center;
         font-size: 5vh;
         font-family: 'Videotype', sans-serif;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
     }
 }
 
@@ -60,4 +61,9 @@ textarea.contact-message
 
         --bs-btn-disabled-bg: #986ff888 !important;
         --bs-btn-disabled-border-color: #4a13ca !important;
+}
+
+.wrapper-contact-headline h3
+{
+    color: #280381;
 }

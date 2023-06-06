@@ -2,28 +2,30 @@ import { Col, Row } from "react-bootstrap";
 import { ProjectType, lipsum } from "../../Utils/Types";
 import ProjectCell from "../ProjectCell";
 import "./styles.css";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { getProjects } from "../../Utils/API";
+import useIsInViewport from "../../Utils/IsInViewport";
+import useFadeIn from "../../Utils/fadeIn";
 
 const ProjectMenu = () => {
   const [projects, setProjects] = useState<ProjectType[] | null>([
     {
-      imageName: "loading.png",
+      imageName: "images/loading.png",
       title: "Loading...",
       description: "",
     },
     {
-      imageName: "loading.png",
+      imageName: "images/loading.png",
       title: "Loading...",
       description: "",
     },
     {
-      imageName: "loading.png",
+      imageName: "images/loading.png",
       title: "Loading...",
       description: "",
     },
     {
-      imageName: "loading.png",
+      imageName: "images/loading.png",
       title: "Loading...",
       description: "",
     },
@@ -33,7 +35,7 @@ const ProjectMenu = () => {
     let projects = await getProjects(4).then((res) => res?.data);
 
     if (!projects) {
-      console.log("oof");
+      console.log("ERROR. CANNOT LOAD PROJECTS");
       return;
     }
     console.log(projects.data);
@@ -73,17 +75,45 @@ const ProjectMenu = () => {
     setModalShown(modalIndex);
   };
 
+  const titleRowRef = useRef(null);
+
+  const isTitleIntersecting = useIsInViewport(titleRowRef);
+  const titleAnimationClasses = useFadeIn(
+    isTitleIntersecting,
+    "toFadeIn",
+    "fadingInSimple zoomBigSmall"
+  );
+
+  const descriptionRowRef = useRef(null);
+
+  const isDescriptionIntersecting = useIsInViewport(descriptionRowRef);
+  const descriptionAnimationClasses = useFadeIn(
+    isDescriptionIntersecting,
+    "toFadeIn",
+    "fadingInSimple"
+  );
+
   return (
     <div>
-      <Row className="project-title-row">
-        <Col xs="12">
-          <h2>Projects</h2>
-        </Col>
-      </Row>
+      <div className="project-container-title">
+        <h2 ref={titleRowRef} className={titleAnimationClasses}>
+          Projects
+        </h2>
+      </div>
+      <div ref={descriptionRowRef} className="project-container-description">
+        <p
+          style={{ animationDelay: "0.4s" }}
+          className={descriptionAnimationClasses}
+        >
+          Have a little peek at my latest projects, whether they're tech or not.
+        </p>
+      </div>
       <Row className="project-menu-row">
-        {projects?.map((el, index) => (
+        {projects?.map((el, index, arr) => (
           <ProjectCell
             key={"project-" + index}
+            cellIndex={index}
+            cellArrayLength={arr.length}
             data={el}
             showModal={index === modalShown}
             handleModalClose={handleModalClosed}

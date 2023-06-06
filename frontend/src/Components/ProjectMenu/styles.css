@@ -1,11 +1,22 @@
-.project-title-row {
-  height: 10vh;
+.project-container-title {
   display: flex;
   align-items: center;
   justify-content: center; }
-  .project-title-row h2 {
+  .project-container-title h2 {
     text-align: center;
     font-size: 5vh;
-    font-family: 'Videotype', sans-serif; }
+    font-family: 'Videotype', sans-serif;
+    margin-top: 3vh;
+    margin-bottom: 3vh; }
+.project-container-description {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .project-container-description p {
+    font-size: 3vh;
+    margin-bottom: 3vh;
+    color: #280381;
+    max-width: 80vw;
+    text-align: center; }
 
 /*# sourceMappingURL=styles.css.map */

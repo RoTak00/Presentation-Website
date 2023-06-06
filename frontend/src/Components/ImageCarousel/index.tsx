@@ -39,7 +39,7 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
     return (
       <img
         key={`image-${index}`}
-        src={getImageSrc(image.imageName ?? "")}
+        src={getImageSrc(image.imageName ? "carousel/" + image.imageName : "")}
         alt=""
         className={classes}
         style={{ objectPosition: image.imagePosition }}
@@ -52,7 +52,11 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
       <div className="carousel-image-wrapper">{imagesJSX}</div>
 
       <div className="carousel-brand">
-        <img src={getImageSrc("Logo-glow.png")} width="400" alt="" />
+        <img
+          src={getImageSrc("logo/Logo2-glow-black-white-light.png")}
+          width="500"
+          alt=""
+        />
       </div>
     </div>
   );

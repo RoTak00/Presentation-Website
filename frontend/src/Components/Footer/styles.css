@@ -1,12 +1,15 @@
 .footer-wrapper {
   background-color: black;
   width: 100%;
-  height: 15vh; }
+  height: max(10vh, 5vw); }
   .footer-wrapper div {
     display: flex;
     align-items: center;
     justify-content: center;
     color: #888888;
     font-size: 18px; }
+    @media (max-width: 992px) {
+      .footer-wrapper div {
+        flex-direction: column; } }
 
 /*# sourceMappingURL=styles.css.map */

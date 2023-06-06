@@ -7,10 +7,12 @@ import {
   Button,
 } from "react-bootstrap";
 import "./styles.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useMediaQuery from "../../Utils/MediaQuery";
 import { UserMessageType } from "../../Utils/Types";
 import { postUserMessage } from "../../Utils/API";
+import useIsInViewport from "../../Utils/IsInViewport";
+import useFadeIn from "../../Utils/fadeIn";
 
 const ContactMenu = () => {
   /**
@@ -89,17 +91,35 @@ const ContactMenu = () => {
       buttonDisabled = true;
   }
 
+  const titleRowRef = useRef(null);
+
+  const isTitleIntersecting = useIsInViewport(titleRowRef);
+
+  const titleAnimationClasses = useFadeIn(
+    isTitleIntersecting,
+    "toFadeIn",
+    "fadingInSimple zoomBigSmall"
+  );
+
   return (
     <>
       <Row className="contact-title-row">
         <Col xs="12">
-          <h2>Let's get in touch!</h2>
+          <h2 ref={titleRowRef} className={titleAnimationClasses}>
+            Let's get in touch!
+          </h2>
         </Col>
       </Row>
-      <Row className="contact-form-wrapper">
-        <Form method="POST" onSubmit={handleSubmit}>
+      <Row className={`contact-form-wrapper`}>
+        <Form
+          method="POST"
+          onSubmit={handleSubmit}
+          /*ref={formRef}
+          className={formAnimationClasses}
+          style={{ animationDelay: "0.4s" }}*/
+        >
           <FormGroup>
-            <Row>{headline}</Row>
+            <Row class="wrapper-contact-headline">{headline}</Row>
             <Row>
               <Col xs="12" lg={formBodySubmitted ? "6" : "12"}>
                 {!formBodySubmitted || isBigScreen ? (
