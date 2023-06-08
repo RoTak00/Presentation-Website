@@ -24,9 +24,9 @@ class ProjectController extends Controller
     {
         $projects = null;
         if($limit == null)
-            $projects = Project::all()->reverse();
+            $projects = Project::where('status', 'active')->get()->reverse();
         else
-            $projects = Project::all()->take($limit)->reverse();
+            $projects = Project::where('status', 'active')->take($limit)->get()->reverse();
 
         foreach($projects as $item)
         {
@@ -51,6 +51,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $alias = GenerateAlias($request->title);
         $imageName = "project-" . $alias . "." . $request->image->extension();
         $index = 1;
@@ -61,15 +63,29 @@ class ProjectController extends Controller
         }
         $request->image->move(public_path("images/projects"), $imageName);
 
+
+
         $newProject = new Project;
         $newProject->title = $request->title;
         $newProject->description = $request->description;
         $newProject->image = $imageName;
         $newProject->link = $request->link;
+        $newProject->link_github = $request->link_github;
+
+        $newProject->status = "inactive";
+        if($request->is_published) $newProject->status = "active";
+
+        
 
         $newProject->save();
 
-        return redirect()->back();
+        $sessionSuccessMessage = "Project added successfully.";
+        if($request->save_and_exit)
+            return redirect()->route('projects.index')->with('message', $sessionSuccessMessage);
+        if($request->save_and_new)
+            return redirect()->back()->with('message', $sessionSuccessMessage);
+
+        return redirect()->back()->with('message', "Save ok. Error redirecting.");
     }
 
     /**

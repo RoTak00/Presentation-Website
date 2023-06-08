@@ -1,26 +1,47 @@
 @extends('master')
 
+@section('page_title')
+    User Messages
+@endsection
+
 @section('content')
-    <style>
-        input,
-        label {
-            display: block;
-            margin-bottom: 30px;
-        }
-    </style>
-    <h1>Messages List</h1>
+    <div class="container">
 
-    @foreach ($messages as $item)
-        <div style="margin-bottom: 10px;">
-            <strong> {{ $item->name }} </strong>
-            <br>
-            <p>{{ $item->message }}</p>
-
-            <form method="POST" action={{ route('messages.destroy', ['message' => $item->id]) }}>
-                @csrf
-                @method('DELETE')
-                <button type="submit"> Remove </button>
-            </form>
+        <div class="message-index-container header">
+            <div> ID </div>
+            <div> From </div>
+            <div> Content </div>
+            <div class="actions"> Actions </div>
         </div>
-    @endforeach
+
+        @foreach ($messages as $m)
+            <div class="message-index-container">
+                <div>
+                    {{ $m->id }}
+                </div>
+
+                <div>
+                    <strong> {{ $m->name }} </strong><br />
+                    <a href="mailto:{{ $m->email }}"> {{ $m->email }}</a>
+                </div>
+
+
+                <div>
+                    {{ $m->message }}
+                </div>
+
+                <div class="actions">
+
+                    <form method="POST" action={{ route('messages.destroy', ['message' => $m->id]) }}>
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"> Remove </button>
+                    </form>
+                </div>
+
+            </div>
+        @endforeach
+
+
+    </div>
 @endsection
