@@ -17,6 +17,7 @@ use App\Http\Controllers\ProjectController;
 
 
 Route::post('/api/contact', [UserMessageController::class, 'store']);
+Route::get('/api/projects/page/{page}/limit/{limit}', [ProjectController::class, 'api_get_paginated']);
 Route::get('/api/projects/{limit?}', [ProjectController::class, 'api_get']);
 
 Auth::routes();

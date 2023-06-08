@@ -37,6 +37,28 @@ class ProjectController extends Controller
 
     }
 
+    /**
+     * Retrieves a paginated JSON response of active projects, 
+     * with optional limits and page numbers for pagination.
+     *
+     * @param int|null $limit The number of results to return per page.
+     * @param int|null $page The page number to retrieve.
+     * @throws Some_Exception_Class If an error occurs during pagination.
+     * @return \Illuminate\Http\JsonResponse The paginated projects and total pages as JSON.
+     */
+    public function api_get_paginated($page, $limit)
+    {
+        $projects = Project::where('status', 'active');
+        $pages = ceil($projects->count() / $limit);
+        $projects = $projects->offset(($page-1) * $limit);
+        $projects = $projects->take($limit);
+        $projects = $projects->get();
+
+
+        return response()->json(['data'=>$projects, 'pages'=>$pages]);
+
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -54,21 +76,43 @@ class ProjectController extends Controller
 
 
         $alias = GenerateAlias($request->title);
-        $imageName = "project-" . $alias . "." . $request->image->extension();
-        $index = 1;
-        while(File::exists(public_path("images/projects/".$imageName)))
+
+        $imageName = "";
+        $imageExtension = "";
+        $imageFileName = "";
+        if($request->copy_image != null)
         {
-            $imageName = "project-" . $alias . "-" . $index . "." . $request->image->extension();
+            $imageFileName = $request->copy_image;
+            $imageExtension = explode(".", $imageFileName)[1];
+            $imageName = explode(".", $imageFileName)[0];
+        }
+        else
+        {
+            $imageName = "project-".$alias;
+            $imageExtension = $request->image->extension();
+            $imageFileName = $imageName. "." . $imageExtension;
+        }
+        $index = 1;
+        while(File::exists(public_path("images/projects/".$imageFileName)))
+        {
+            $imageFileName = $imageName . "-" . $index . "." . $imageExtension;
             $index += 1;
         }
-        $request->image->move(public_path("images/projects"), $imageName);
 
+        if($request->copy_image != null)
+        {
+            copy(public_path("images/projects/".$request->copy_image), public_path("images/projects/".$imageFileName));
+        }
+        else
+        {
+            $request->image->move(public_path("images/projects"), $imageFileName);
+        }
 
 
         $newProject = new Project;
         $newProject->title = $request->title;
         $newProject->description = $request->description;
-        $newProject->image = $imageName;
+        $newProject->image = $imageFileName;
         $newProject->link = $request->link;
         $newProject->link_github = $request->link_github;
 
@@ -80,6 +124,11 @@ class ProjectController extends Controller
         $newProject->save();
 
         $sessionSuccessMessage = "Project added successfully.";
+        if($request->copy_image != null)
+        {
+            $sessionSuccessMessage = "Project copied successfully.";
+            return redirect()->route('projects.index')->with('message', $sessionSuccessMessage);
+        }
         if($request->save_and_exit)
             return redirect()->route('projects.index')->with('message', $sessionSuccessMessage);
         if($request->save_and_new)
@@ -114,6 +163,14 @@ class ProjectController extends Controller
 
         $alias = GenerateAlias($request->title);
 
+        if($request->save_as_copy)
+        {
+            $request->copy_image = $project->image;
+            $request->is_published = 0;
+            $this->store($request);
+            return redirect()->route('projects.index');
+        }
+
         $imageName = $project->image;
         if($request->image != null)
         {
@@ -136,10 +193,19 @@ class ProjectController extends Controller
         $project->description = $request->description;
         $project->image = $imageName;
         $project->link = $request->link;
+        $project->link_github = $request->link_github;
+        $project->status = "inactive";
+        if($request->is_published) $project->status = "active";
 
         $project->save();
 
-        return redirect()->back();
+        $sessionSuccessMessage = "Project edited successfully.";
+        if($request->save_and_exit)
+            return redirect()->route('projects.index')->with('message', $sessionSuccessMessage);
+        if($request->save)
+            return redirect()->back()->with('message', $sessionSuccessMessage);
+
+        return redirect()->back()->with('message', "Save ok. Error redirecting.");
     }
 
     /**
