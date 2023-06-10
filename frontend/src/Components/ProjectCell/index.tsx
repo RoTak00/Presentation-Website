@@ -51,7 +51,7 @@ const ProjectCell: React.FC<Props> = ({
         onClick={() => handleModalOpened()}
         ref={cellRef}
       >
-        <img src={data.imageName ?? ""} alt={data.title}></img>
+        <img src={data.image ?? ""} alt={data.title}></img>
 
         {isHovering ? (
           <div className="project-menu-hover">Find out more!</div>
@@ -76,10 +76,7 @@ const ProjectCell: React.FC<Props> = ({
         </Row>
         <div className="project-modal-image-wrapper">
           <div>
-            <img
-              src={data.wideImageName ?? data.imageName ?? ""}
-              alt={data.title}
-            ></img>
+            <img src={data.image ?? ""} alt={data.title}></img>
           </div>
         </div>
         <Modal.Body className="project-modal-description">
@@ -87,7 +84,7 @@ const ProjectCell: React.FC<Props> = ({
         </Modal.Body>
         <div className="project-modal-buttons">
           <Button
-            href={data.link_project ?? "#"}
+            href={data.link ?? "#"}
             target="_blank"
             variant="primary"
             className="button-checkitout"

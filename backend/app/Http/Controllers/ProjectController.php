@@ -54,6 +54,11 @@ class ProjectController extends Controller
         $projects = $projects->take($limit);
         $projects = $projects->get();
 
+        foreach($projects as $item)
+        {
+            $item->image = 'http://'.$_SERVER['HTTP_HOST']."/images/projects/".$item->image;
+        }
+
 
         return response()->json(['data'=>$projects, 'pages'=>$pages]);
 

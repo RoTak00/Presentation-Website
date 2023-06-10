@@ -1,5 +1,5 @@
-import { Col, Row } from "react-bootstrap";
-import { ProjectType, lipsum } from "../../Utils/Types";
+import { Row } from "react-bootstrap";
+import { ProjectType } from "../../Utils/Types";
 import ProjectCell from "../ProjectCell";
 import "./styles.css";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -10,22 +10,22 @@ import useFadeIn from "../../Utils/fadeIn";
 const ProjectMenu = () => {
   const [projects, setProjects] = useState<ProjectType[] | null>([
     {
-      imageName: "images/loading.png",
+      image: "images/loading.png",
       title: "Loading...",
       description: "",
     },
     {
-      imageName: "images/loading.png",
+      image: "images/loading.png",
       title: "Loading...",
       description: "",
     },
     {
-      imageName: "images/loading.png",
+      image: "images/loading.png",
       title: "Loading...",
       description: "",
     },
     {
-      imageName: "images/loading.png",
+      image: "images/loading.png",
       title: "Loading...",
       description: "",
     },
@@ -45,16 +45,7 @@ const ProjectMenu = () => {
       numeric_array_projects.push(projects.data[item]);
     }
 
-    let outputProjects = numeric_array_projects.map((el: any) => {
-      return {
-        imageName: el.image,
-        title: el.title,
-        link_project: el.link,
-        description: el.description,
-      };
-    });
-
-    setProjects(outputProjects);
+    setProjects(numeric_array_projects);
     setProjectsLoaded(true);
   }, []);
 
@@ -97,7 +88,7 @@ const ProjectMenu = () => {
     <div>
       <div className="project-container-title">
         <h2 ref={titleRowRef} className={titleAnimationClasses}>
-          Projects
+          My Projects
         </h2>
       </div>
       <div ref={descriptionRowRef} className="project-container-description">

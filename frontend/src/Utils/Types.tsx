@@ -4,13 +4,19 @@ type CarouselImageType = {
 };
 
 type ProjectType = {
-  imageName?: string;
-  wideImageName?: string;
-  title: string;
+  image?: string;
+  title?: string;
   description?: string;
   link_github?: string;
-  link_project?: string;
+  link?: string;
   imagePosition?: "top" | "center" | "bottom";
+
+  clicks?: number;
+  status?: "active" | "inactive" | "deleted";
+  home_clicks?: number;
+  home_link_clicks?: number;
+  dedicated_page_clicks?: number;
+  dedicated_page_link_clicks?: number;
 };
 
 // create the UserMessageType

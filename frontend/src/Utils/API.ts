@@ -31,4 +31,17 @@ const getProjects = async (limit?: number) => {
   }
 };
 
-export { postUserMessage, getProjects };
+const getProjectsPaginated = async (limit: number, page: number) => {
+  try {
+    //console.log(`${API_PATH}/projects${limit ? `/${limit}` : ""}`);
+    const response = await axios.get(
+      `${API_PATH}/projects/page/${page}/limit/${limit}`
+    );
+    return response;
+  } catch (error) {
+    console.error("Error getting projects:", error);
+    return null;
+  }
+};
+
+export { postUserMessage, getProjects, getProjectsPaginated };

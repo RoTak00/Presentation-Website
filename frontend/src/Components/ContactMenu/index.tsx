@@ -119,7 +119,7 @@ const ContactMenu = () => {
           style={{ animationDelay: "0.4s" }}*/
         >
           <FormGroup>
-            <Row class="wrapper-contact-headline">{headline}</Row>
+            <Row className="wrapper-contact-headline">{headline}</Row>
             <Row>
               <Col xs="12" lg={formBodySubmitted ? "6" : "12"}>
                 {!formBodySubmitted || isBigScreen ? (

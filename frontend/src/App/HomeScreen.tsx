@@ -8,7 +8,6 @@ import ProjectMenu from "../Components/ProjectMenu";
 import ContactMenu from "../Components/ContactMenu";
 import ContactIcons from "../Components/ContactIcons";
 import CustomFooter from "../Components/Footer";
-import { API_PATH } from "../Utils/Helpers";
 
 const HomeScreen = () => {
   const images: CarouselImageType[] = [
