@@ -85,19 +85,30 @@ const ProjectMenu = () => {
   );
 
   return (
-    <div>
-      <div className="project-container-title">
-        <h2 ref={titleRowRef} className={titleAnimationClasses}>
-          My Projects
-        </h2>
-      </div>
-      <div ref={descriptionRowRef} className="project-container-description">
-        <p
-          style={{ animationDelay: "0.4s" }}
-          className={descriptionAnimationClasses}
-        >
-          Have a little peek at my latest projects, whether they're tech or not.
-        </p>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "space-around",
+        flexDirection: "column",
+        scrollSnapAlign: "start",
+      }}
+    >
+      <div>
+        <div className="project-container-title">
+          <h2 ref={titleRowRef} className={titleAnimationClasses}>
+            My Projects
+          </h2>
+        </div>
+        <div ref={descriptionRowRef} className="project-container-description">
+          <p
+            style={{ animationDelay: "0.4s" }}
+            className={descriptionAnimationClasses}
+          >
+            Have a little peek at my latest projects, whether they're tech or
+            not.
+          </p>
+        </div>
       </div>
       <Row className="project-menu-row">
         {projects?.map((el, index, arr) => (

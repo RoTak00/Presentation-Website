@@ -83,14 +83,26 @@ const ProjectCell: React.FC<Props> = ({
           <div>{data.description}</div>
         </Modal.Body>
         <div className="project-modal-buttons">
-          <Button
-            href={data.link ?? "#"}
-            target="_blank"
-            variant="primary"
-            className="button-checkitout"
-          >
-            Check it out!
-          </Button>
+          {data.link ? (
+            <Button
+              href={data.link ?? "#"}
+              target="_blank"
+              variant="primary"
+              className="button-checkitout"
+            >
+              Check it out!
+            </Button>
+          ) : null}
+          {data.link_github ? (
+            <Button
+              href={data.link_github ?? "#"}
+              target="_blank"
+              variant="primary"
+              className="button-checkitout"
+            >
+              More on GitHub!
+            </Button>
+          ) : null}
         </div>
       </Modal>
     </>

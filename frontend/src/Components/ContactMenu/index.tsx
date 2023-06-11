@@ -102,7 +102,7 @@ const ContactMenu = () => {
   );
 
   return (
-    <>
+    <section style={{ scrollSnapAlign: "start" }}>
       <Row className="contact-title-row">
         <Col xs="12">
           <h2 ref={titleRowRef} className={titleAnimationClasses}>
@@ -197,7 +197,7 @@ const ContactMenu = () => {
           ) : null}
         </Form>
       </Row>
-    </>
+    </section>
   );
 };
 

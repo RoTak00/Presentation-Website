@@ -4,26 +4,26 @@
   justify-content: center; }
   .contact-title-row h2 {
     text-align: center;
-    font-size: 5vh;
+    font-size: 4rem;
     font-family: 'Videotype', sans-serif;
-    margin-top: 3vh;
-    margin-bottom: 3vh; }
+    margin-top: 2rem;
+    margin-bottom: 2rem; }
 
 .contact-form-wrapper {
   padding: 3em;
   margin-left: auto;
   margin-right: auto;
-  background-color: #21038122;
+  background-color: #28083122;
   min-height: 30vh; }
 
 .contact-form-floating-label {
-  font-size: 18px; }
+  font-size: 1rem; }
 
 textarea.contact-message {
   height: 25vh; }
 
 .form-headline {
-  font-size: 25px;
+  font-size: 2rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -33,7 +33,7 @@ textarea.contact-message {
   font-family: 'Videotype', sans-serif; }
 
 .button-send {
-  --bs-btn-bg: #280381 !important;
+  --bs-btn-bg: #280831 !important;
   --bs-btn-border-color: #190152 !important;
   --bs-btn-hover-bg: #3200a8 !important;
   --bs-btn-hover-border-color: #190152 !important;
@@ -43,6 +43,6 @@ textarea.contact-message {
   --bs-btn-disabled-border-color: #4a13ca !important; }
 
 .wrapper-contact-headline h3 {
-  color: #280381; }
+  color: #280831; }
 
 /*# sourceMappingURL=styles.css.map */

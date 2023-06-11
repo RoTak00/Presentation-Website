@@ -9,7 +9,7 @@ const CustomFooter = () => {
   const lg = useMediaQuery("(min-width: 992px)");
 
   return (
-    <div className="footer-wrapper">
+    <div className="footer-wrapper" style={{ scrollSnapAlign: "end" }}>
       <Row className="h-100">
         <Col xs="6">Created by Takacs Robert</Col>
         <Col xs="6">All rights reserved {new Date().getFullYear()}</Col>

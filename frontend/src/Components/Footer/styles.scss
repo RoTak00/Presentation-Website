@@ -2,7 +2,7 @@
 .footer-wrapper {
   background-color: black;
   width:100%;
-  height: max(10vh, 5vw);
+  height: 6rem;
 
   & div{
     display: flex;
@@ -17,7 +17,7 @@
 
 
 
-    color: #888888;
-    font-size: 18px;
+    color: #333333;
+    font-size: 15px;
   }
 }

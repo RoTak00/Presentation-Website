@@ -29,21 +29,19 @@ const HomeScreen = () => {
     },
   ];
   return (
-    <>
-      <div
-        style={{
-          backgroundImage: `url(/images/background.png)`,
-          backgroundRepeat: "repeat-y",
-        }}
-      >
-        <NavigationBar />
-        <ImageCarousel images={images} delay={2000} />
-        <ProjectMenu />
-        <ContactMenu />
-        <ContactIcons />
-        <CustomFooter />
-      </div>
-    </>
+    <div
+      style={{
+        backgroundImage: `url(/images/background.png)`,
+        backgroundRepeat: "repeat-y",
+      }}
+    >
+      <NavigationBar />
+      <ImageCarousel images={images} delay={2000} />
+      <ProjectMenu />
+      <ContactMenu />
+      <ContactIcons />
+      <CustomFooter />
+    </div>
   );
 };
 

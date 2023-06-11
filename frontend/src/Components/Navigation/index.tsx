@@ -11,10 +11,10 @@ type Props = {
   brand_delay?: number;
 };
 const NavigationBar: React.FC<Props> = ({ brand_text, brand_delay }) => {
-  const lg = useMediaQuery("(min-width: 992px)");
+  //const lg = useMediaQuery("(min-width: 992px)");
 
   return (
-    <div className="navbar-wrapper">
+    <div className="navbar-wrapper" style={{ scrollSnapAlign: "start" }}>
       <Row className="h-100">
         <Col xs={12} lg={6} className="brand">
           <BrandName
@@ -23,6 +23,8 @@ const NavigationBar: React.FC<Props> = ({ brand_text, brand_delay }) => {
           />
         </Col>
       </Row>
+
+      {/*<div className="navbar-effect"></div>*/}
     </div>
   );
 };

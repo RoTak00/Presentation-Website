@@ -3,15 +3,15 @@ a.page-cell
     text-decoration: none;
 
     border: 2px solid #222222;
-    width: 2em;
-    height: 2em;
+    width: 3rem;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0px 10px;
-    font-size: 1.5em;
+    margin: 0px 0.75rem;
+    font-size: 1.5rem;
 
-    background-color: #28038133;
+    background-color: #28083133;
     transform: skewX(-10deg);
 
     &, &:visited{
@@ -30,7 +30,7 @@ a.page-cell
     &:hover:not(.disabled)
     {
         color:white;
-        background-color: #280381;
+        background-color: #280831;
     }
 
     &.disabled:hover
@@ -42,12 +42,12 @@ a.page-cell
 
 a.page-cell.addMarginRight
 {
-    margin-right: 50px;
+    margin-right: 4rem;
 }
 div.pagination 
 {
     display: flex;
     justify-content: center;
-    padding-bottom: 25px;
+    padding-bottom: 3rem;
 }
 

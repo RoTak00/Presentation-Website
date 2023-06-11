@@ -24,9 +24,9 @@ class ProjectController extends Controller
     {
         $projects = null;
         if($limit == null)
-            $projects = Project::where('status', 'active')->get()->reverse();
+            $projects = Project::where('status', 'active')->orderBy('created_at', 'desc')->get();
         else
-            $projects = Project::where('status', 'active')->take($limit)->get()->reverse();
+            $projects = Project::where('status', 'active')->orderBy('created_at', 'desc')->take($limit)->get();
 
         foreach($projects as $item)
         {
@@ -48,7 +48,7 @@ class ProjectController extends Controller
      */
     public function api_get_paginated($page, $limit)
     {
-        $projects = Project::where('status', 'active');
+        $projects = Project::where('status', 'active')->orderBy('created_at', 'desc');
         $pages = ceil($projects->count() / $limit);
         $projects = $projects->offset(($page-1) * $limit);
         $projects = $projects->take($limit);

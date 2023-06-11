@@ -54,8 +54,7 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
       <div className="carousel-brand">
         <img
           src={getImageSrc("logo/Logo2-glow-black-white-light.png")}
-          width="500"
-          alt=""
+          alt="Takacs Robert Logo"
         />
       </div>
     </div>

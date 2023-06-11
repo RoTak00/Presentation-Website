@@ -3,6 +3,7 @@ import useIsInViewport from "../../Utils/IsInViewport";
 import { ProjectType } from "../../Utils/Types";
 import "./styles.scss";
 import useFadeIn from "../../Utils/fadeIn";
+import useMediaQuery from "../../Utils/MediaQuery";
 
 type Props = {
   project: ProjectType;
@@ -16,6 +17,9 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
     "slideIn",
     index % 2 === 0 ? "left" : "right"
   );
+
+  const isSmallScreen = useMediaQuery("(max-width: 992px)");
+  console.log(isSmallScreen);
   let projectImage = (
     <div className={"project-page-image " + animationClasses}>
       <img src={project.image ?? ""} alt={project.title} />
@@ -31,22 +35,18 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
       <p>{project.description}</p>
       <div className="links">
         {project.link_github ? (
-          <div>
-            <a
-              href={project.link_github}
-              target="_blank"
-              rel="nofollow noreferrer"
-            >
-              More on GitHub!
-            </a>
-          </div>
+          <a
+            href={project.link_github}
+            target="_blank"
+            rel="nofollow noreferrer"
+          >
+            More on GitHub!
+          </a>
         ) : null}
         {project.link ? (
-          <div>
-            <a href={project.link} target="_blank" rel="noreferrer">
-              Check it out!
-            </a>
-          </div>
+          <a href={project.link} target="_blank" rel="noreferrer">
+            Check it out!
+          </a>
         ) : null}
       </div>
     </div>
@@ -54,9 +54,9 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
 
   return (
     <div key={`project-${index}`} className="project-page-cell container">
-      {index % 2 === 0 ? projectImage : projectInfo}
+      {index % 2 === 0 || isSmallScreen ? projectImage : projectInfo}
 
-      {index % 2 === 0 ? projectInfo : projectImage}
+      {index % 2 === 0 || isSmallScreen ? projectInfo : projectImage}
     </div>
   );
 };
