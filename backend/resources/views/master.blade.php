@@ -35,7 +35,7 @@
                 <button type="submit">Messages</button>
             </form>
             <form action="/gallery">
-                <button type="submit" disabled>Gallery</button>
+                <button type="submit">Gallery</button>
             </form>
 
         </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserMessageController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\GalleryPostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
 
 Route::resource('projects', ProjectController::class)->middleware("auth");
+Route::resource('gallery', GalleryPostsController::class)->middleware("auth");
+Route::post('gallery/upload_file', [GalleryPostsController::class, 'upload_file'])->middleware("auth")->name('gallery.upload_file');
+Route::post('gallery/delete_file', [GalleryPostsController::class, 'delete_file'])->middleware("auth")->name('gallery.delete_file');
+
 
 
 Route::get('/messages', [UserMessageController::class, 'index'])->middleware("auth")->name('messages.index');
