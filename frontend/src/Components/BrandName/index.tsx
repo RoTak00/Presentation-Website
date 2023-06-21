@@ -23,7 +23,9 @@ const BrandName: React.FC<Props> = ({ text, delay }) => {
 
   return (
     <>
-      <span className="color1">{text.slice(0, brandEffectIndex)}</span>
+      <span className="color1" onClick={() => (window.location.href = "/")}>
+        {text.slice(0, brandEffectIndex)}
+      </span>
       <span className="color2">{text.slice(brandEffectIndex)}</span>
     </>
   );

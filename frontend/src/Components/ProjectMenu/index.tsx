@@ -109,6 +109,15 @@ const ProjectMenu = () => {
             not.
           </p>
         </div>
+
+        <div className="project-container-description">
+          <p
+            style={{ animationDelay: "0.6s" }}
+            className={descriptionAnimationClasses}
+          >
+            <a href="/projects">Find the project archive here</a>
+          </p>
+        </div>
       </div>
       <Row className="project-menu-row">
         {projects?.map((el, index, arr) => (

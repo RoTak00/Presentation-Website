@@ -28,6 +28,15 @@
             color: #280831;
             max-width: 80vw;
             text-align: center;
+
+            & > a
+            {
+                font-size: 1.5rem;
+                margin-bottom: 2.5rem;
+                color: #280831;
+                max-width: 60vw;
+                text-align: center;
+            }
         }
     }
 }
