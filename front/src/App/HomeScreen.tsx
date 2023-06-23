@@ -3,7 +3,8 @@ const HomeScreen = () => {
   
   return (
     <div>
-      
+      <Canvas/>
+
       
     </div>
   );
