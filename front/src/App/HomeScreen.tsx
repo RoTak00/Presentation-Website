@@ -8,6 +8,7 @@ import ProjectMenu from "../Components/ProjectMenu";
 import ContactMenu from "../Components/ContactMenu";
 import ContactIcons from "../Components/ContactIcons";
 import CustomFooter from "../Components/Footer";
+import GalleryMenu from "../Components/GalleryMenu";
 
 const HomeScreen = () => {
   const images: CarouselImageType[] = [
@@ -37,6 +38,7 @@ const HomeScreen = () => {
     >
       <NavigationBar />
       <ImageCarousel images={images} delay={2000} />
+      <GalleryMenu/>
       <ProjectMenu />
       <ContactMenu />
       <ContactIcons />
