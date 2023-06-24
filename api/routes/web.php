@@ -26,6 +26,8 @@ Auth::routes();
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware("auth");
 
 Route::resource('projects', ProjectController::class)->middleware("auth");
+Route::post('projects/add_tag', [ProjectController::class, 'add_tag'])->middleware("auth")->name('projects.add_tag');
+Route::post('projects/remove_tag', [ProjectController::class, 'remove_tag'])->middleware("auth")->name('projects.remove_tag');
 Route::resource('gallery', GalleryPostsController::class)->middleware("auth");
 Route::post('gallery/upload_file', [GalleryPostsController::class, 'upload_file'])->middleware("auth")->name('gallery.upload_file');
 Route::post('gallery/delete_file', [GalleryPostsController::class, 'delete_file'])->middleware("auth")->name('gallery.delete_file');

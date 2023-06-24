@@ -26,7 +26,9 @@
                     <label for="link"> Link </label>
                     <input type="text" name="link" placeholder="Link" required />
                     <label for="link_github"> GitHub Link </label>
-                    <input type="text" name="link_github" placeholder="Github Link" required />
+                    <input type="text" name="link_github" placeholder="Github Link"/>
+                    <label for="project_date"> Project Date </label>
+                    <input type="text" name="project_date" placeholder="Project Date"/>
                     <label for="image">Image</label>
                     <input type="file" name="image" id="image"
                         accept="image/png,image/jpg,image/jpeg,image/bmp,image/gif,image/webp" required>

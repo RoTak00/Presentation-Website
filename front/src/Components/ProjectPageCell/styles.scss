@@ -105,7 +105,7 @@
             margin-bottom: 1.5rem;
         }
 
-        & > p{
+        & > p, div.p{
             display: block;
             
             text-align: justify;
@@ -164,3 +164,68 @@
 
     }
 }
+
+.project-tags
+{
+    display: flex;
+    position: absolute;
+    top: 0em;
+    left: 1em;
+    right: 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &.static
+    {
+        position: static;
+    }
+
+    &.big
+    {
+        &>.tag
+        {
+            font-size: 1.25rem;
+        }
+    }
+
+    & > .tag 
+    {
+        padding: 0.5rem;
+        margin: 0.25rem 0.5rem 0.25rem 0;
+        background-color: #ffffffbb;
+        color: #280831;
+        border-radius: 1rem;
+        font-family: 'Videotype', sans-serif;
+        font-size: 1em;
+
+        @media (max-width: 992px)
+        {
+            font-size: 0.75em;
+        }
+    }
+}
+
+
+.fadingInNormal
+{
+    animation-name: fadeIn;
+    animation-timing-function: ease;
+    animation-delay: 0.75s;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+
+    /*@media screen and (max-width: 992px)
+    {
+        animation: none;
+    }*/
+}
+
+@keyframes fadeIn
+    {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }

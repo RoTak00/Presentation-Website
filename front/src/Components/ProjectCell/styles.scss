@@ -59,6 +59,38 @@
     }
 }
 
+.project-menu-tags
+{
+    display: flex;
+    position: absolute;
+    top: 0em;
+    left: 1em;
+    right: 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &.static
+    {
+        position: static;
+    }
+
+    & > .tag 
+    {
+        padding: 0.5rem;
+        margin: 0.25rem 0.5rem 0.25rem 0;
+        background-color: #ffffffbb;
+        color: #280831;
+        border-radius: 1rem;
+        font-family: 'Videotype', sans-serif;
+        font-size: 1em;
+
+        @media (max-width: 992px)
+        {
+            font-size: 0.75em;
+        }
+    }
+}
+
 .project-modal
 {
     & .modal-content
@@ -90,6 +122,11 @@
         justify-content: center;
         align-items: center;
         
+        &.tags
+        {
+            --bs-modal-padding: 0rem !important;
+        }
+
         & > div {
         width: 70%;
         font-size: 1.2rem;
@@ -100,6 +137,8 @@
             font-size: 0.9rem;
         }
         text-align: justify;
+
+        
         }
     }
     & .project-modal-image-wrapper
@@ -142,13 +181,13 @@
     {
         width: 80%;
         cursor: pointer;
-        --bs-btn-bg: #280381 !important;
+        --bs-btn-bg: #280831 !important;
         --bs-btn-border-color: #190152 !important;
 
-        --bs-btn-hover-bg: #3200a8 !important;
+        --bs-btn-hover-bg: #4b0f5c!important;
         --bs-btn-hover-border-color: #190152 !important;
 
-        --bs-btn-active-bg: #552db3 !important;
+        --bs-btn-active-bg: #4b0f5c !important;
         --bs-btn-active-border-color: #3200a8 !important;
 
         @media (min-width: 992px)

@@ -39,6 +39,28 @@
     opacity: 0; }
   100% {
     opacity: 100%; } }
+.project-menu-tags {
+  display: flex;
+  position: absolute;
+  top: 0em;
+  left: 1em;
+  right: 1em;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .project-menu-tags.static {
+    position: static; }
+  .project-menu-tags > .tag {
+    padding: 0.5rem;
+    margin: 0.25rem 0.5rem 0.25rem 0;
+    background-color: #ffffffbb;
+    color: #280831;
+    border-radius: 1rem;
+    font-family: 'Videotype', sans-serif;
+    font-size: 1em; }
+    @media (max-width: 992px) {
+      .project-menu-tags > .tag {
+        font-size: 0.75em; } }
+
 .project-modal .modal-content {
   background-color: #eeeeeebb !important; }
 .project-modal .project-modal-title {
@@ -57,6 +79,8 @@
   display: flex;
   justify-content: center;
   align-items: center; }
+  .project-modal .project-modal-description.tags {
+    --bs-modal-padding: 0rem !important; }
   .project-modal .project-modal-description > div {
     width: 70%;
     font-size: 1.2rem;
@@ -90,11 +114,11 @@
 .project-modal .button-checkitout {
   width: 80%;
   cursor: pointer;
-  --bs-btn-bg: #280381 !important;
+  --bs-btn-bg: #280831 !important;
   --bs-btn-border-color: #190152 !important;
-  --bs-btn-hover-bg: #3200a8 !important;
+  --bs-btn-hover-bg: #4b0f5c!important;
   --bs-btn-hover-border-color: #190152 !important;
-  --bs-btn-active-bg: #552db3 !important;
+  --bs-btn-active-bg: #4b0f5c !important;
   --bs-btn-active-border-color: #3200a8 !important; }
   @media (min-width: 992px) {
     .project-modal .button-checkitout:nth-of-type(1) {

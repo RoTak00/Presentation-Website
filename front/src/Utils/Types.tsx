@@ -3,13 +3,20 @@ type CarouselImageType = {
   imagePosition?: "top" | "center" | "bottom";
 };
 
+type ProjectTagType = 
+{
+  tag_name?: string;
+};
+
 type ProjectType = {
   image?: string;
   title?: string;
   description?: string;
   link_github?: string;
   link?: string;
+  project_date?: string;
   imagePosition?: "top" | "center" | "bottom";
+  tags?: ProjectTagType[];
 
   clicks?: number;
   status?: "active" | "inactive" | "deleted";

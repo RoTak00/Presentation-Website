@@ -18,11 +18,22 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
     index % 2 === 0 ? "left" : "right"
   );
 
+  const tagAnimationClasses = useFadeIn(
+    isIntersecting,
+    "fadeIn",
+    "fadingInNormal"
+  );
+
+  const tagsTSX = isIntersecting ? project.tags?.map((tag, index) => (
+    <div className = {"tag "+tagAnimationClasses} style = {{animationDelay: `${0.4 + (index * 0.2)}s`}}>{tag.tag_name}</div>
+  )) : null;
+
   const isSmallScreen = useMediaQuery("(max-width: 992px)");
   console.log(isSmallScreen);
   let projectImage = (
-    <div className={"project-page-image " + animationClasses}>
+    <div className={"project-page-image " + animationClasses} style={!isIntersecting?{opacity:0}:{}}>
       <img src={project.image ?? ""} alt={project.title} />
+      {project.tags ? (<div className = {"project-tags big "}>{tagsTSX}</div>) : null}
     </div>
   );
   let projectInfo = (
@@ -33,6 +44,7 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
     >
       <h3>{project.title}</h3>
       <p>{project.description}</p>
+     
       <div className="links">
         {project.link_github ? (
           <a

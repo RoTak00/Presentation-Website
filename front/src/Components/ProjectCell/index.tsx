@@ -34,7 +34,13 @@ const ProjectCell: React.FC<Props> = ({
     "fadingInLeft"
   );
 
+
   const animationDelay = `${(cellArrayLength - cellIndex + 1) * 0.2}s`;
+
+
+  const tagsTSX = data.tags?.map((tag) => (
+    <div className = "tag">{tag.tag_name}</div>
+  ));
   return (
     <>
       <Col
@@ -52,6 +58,9 @@ const ProjectCell: React.FC<Props> = ({
         ref={cellRef}
       >
         <img src={data.image ?? ""} alt={data.title}></img>
+
+        {data.tags ? (<div className = {"project-menu-tags"}>{tagsTSX}</div>) : null}
+        
 
         {isHovering ? (
           <div className="project-menu-hover">Find out more!</div>
@@ -81,6 +90,12 @@ const ProjectCell: React.FC<Props> = ({
         </div>
         <Modal.Body className="project-modal-description">
           <div>{data.description}</div>
+          
+        </Modal.Body>
+        <Modal.Body className="project-modal-description tags">
+          <div>
+          {data.tags ? (<div className = {"project-menu-tags static"}>{tagsTSX}</div>) : null}
+          </div>
         </Modal.Body>
         <div className="project-modal-buttons">
           {data.link ? (

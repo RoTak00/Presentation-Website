@@ -30,8 +30,9 @@
                     <label for="link"> Link </label>
                     <input type="text" name="link" placeholder="Link" value="{{ $project->link }}" required />
                     <label for="link_github"> GitHub Link </label>
-                    <input type="text" name="link_github" placeholder="Github Link" value="{{ $project->link_github }}"
-                        required />
+                    <input type="text" name="link_github" placeholder="Github Link" value="{{ $project->link_github }}"/>
+                    <label for="project_date"> Project Date </label>
+                    <input type="text" name="project_date" placeholder="Project Date" value="{{ $project->project_date}}"/>
                     <label for="image">Image</label>
                     <input type="file" name="image" id="image"
                         accept="image/png,image/jpg,image/jpeg,image/bmp,image/gif,image/webp">
@@ -43,6 +44,20 @@
                 <div class="wrapper">
                     <label for="description">Description</label>
                     <textarea name="description" placeholder="Description" required>{{ $project->description }}</textarea>
+
+                    <input type = "text" name = "tags" id = "tags" />
+                    <button type="button" id="add_tag">Add Tag</button>
+                    <div id="tags_preview">
+                        @foreach ($project->tag as $tag)
+                            <div class="tag" id = "tag-{{$tag->id}}">
+                                {{$tag->tag_name}}
+                                <button type = "button" onclick = "deleteTag({{$tag->id}})">
+                                X
+                                </button>
+                            </div>
+                        @endforeach
+
+                    </div>
                 </div>
             </div>
 
@@ -52,8 +67,10 @@
 
     </div>
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
     <script>
+        
+
         var imageInput = document.querySelector('input#image');
         var imagePreview = document.querySelector('div#image_preview');
 
@@ -65,6 +82,53 @@
 
             imagePreview.innerHTML = '';
             imagePreview.appendChild(img);
+        });
+
+
+        var tagInput = document.querySelector("input#tags");
+        var tagsPreview = document.querySelector("div#tags_preview");
+        var tagButton = document.querySelector("button#add_tag");
+
+        function deleteTag(id)
+        {
+            $.ajax({
+                url: "{{ route('projects.remove_tag') }}",
+                data: {
+                    id: id,
+                    _token: "{{ csrf_token() }}",
+                    _method: 'POST',
+                },
+                method: 'POST',
+                success: function(data) {
+                    document.querySelector("#tag-" + id).remove();
+                }
+                
+            });
+        }
+        tagButton.addEventListener("click", function() {
+            var tag = tagInput.value;
+            tagInput.value = "";
+
+            $.ajax({
+                url: "{{ route('projects.add_tag') }}",
+                data: {
+                    tag: tag,
+                    id: {{ $project->id }},
+                    _token: "{{ csrf_token() }}",
+                    _method: 'POST',
+                },
+                method: 'POST',
+                success: function(data) {
+                    data = JSON.parse(data);
+                    tagsPreview.innerHTML += 
+                    `<div class="tag" id = "tag-${data.id}">
+                    ${data.tag_name} 
+                    <button type = "button" onclick="deleteTag(${data.id})">X</button>
+                    </div>`;
+                }
+                
+            });
+
         });
     </script>
 @endsection

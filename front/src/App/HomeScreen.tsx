@@ -38,7 +38,6 @@ const HomeScreen = () => {
     >
       <NavigationBar />
       <ImageCarousel images={images} delay={2000} />
-      <GalleryMenu/>
       <ProjectMenu />
       <ContactMenu />
       <ContactIcons />

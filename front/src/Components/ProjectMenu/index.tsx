@@ -33,18 +33,15 @@ const ProjectMenu = () => {
 
   const loadProjects = useCallback(async () => {
     let projects = await getProjects(4).then((res) => res?.data);
-
     if (!projects) {
       console.log("ERROR. CANNOT LOAD PROJECTS");
       return;
     }
-    console.log(projects.data);
 
     let numeric_array_projects = [];
     for (var item in projects.data) {
       numeric_array_projects.push(projects.data[item]);
     }
-
     setProjects(numeric_array_projects);
     setProjectsLoaded(true);
   }, []);

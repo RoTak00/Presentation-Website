@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProjectTag;
 use Illuminate\Http\Request;
 use Illuminate\Routing\ResponseFactory;
 use App\Models\Project;
@@ -31,6 +32,7 @@ class ProjectController extends Controller
         foreach($projects as $item)
         {
             $item->image = 'http://'.$_SERVER['HTTP_HOST']."/images/projects/".$item->image;
+            $item->tags = ProjectTag::where('project_id', $item->id)->orderBy("tag_name", 'asc')->get();
         }
 
         return response()->json(['data'=>$projects, 'count'=>count($projects)]);
@@ -57,6 +59,7 @@ class ProjectController extends Controller
         foreach($projects as $item)
         {
             $item->image = 'http://'.$_SERVER['HTTP_HOST']."/images/projects/".$item->image;
+            $item->tags = ProjectTag::where('project_id', $item->id)->orderBy("tag_name", 'asc')->get();
         }
 
 
@@ -120,6 +123,7 @@ class ProjectController extends Controller
         $newProject->image = $imageFileName;
         $newProject->link = $request->link;
         $newProject->link_github = $request->link_github;
+        $newProject->project_date = $request->project_date;
 
         $newProject->status = "inactive";
         if($request->is_published) $newProject->status = "active";
@@ -140,6 +144,30 @@ class ProjectController extends Controller
             return redirect()->back()->with('message', $sessionSuccessMessage);
 
         return redirect()->back()->with('message', "Save ok. Error redirecting.");
+    }
+
+    public function add_tag(Request $request)
+    {
+        $project = Project::findOrFail($request->id);
+
+        $tag = new ProjectTag;
+        $tag->tag_name = GenerateAlias($request->tag);
+        $project->tag()->save($tag);
+
+        return json_encode( [
+            "tag_name"=>$tag->tag_name,
+            "id"=>$tag->id,
+        ]);
+    }
+
+    public function remove_tag(Request $request)
+    {
+        $tag = ProjectTag::find($request->id);
+
+        if($tag)
+            $tag->delete();
+
+        return;
     }
 
     /**
@@ -199,6 +227,7 @@ class ProjectController extends Controller
         $project->image = $imageName;
         $project->link = $request->link;
         $project->link_github = $request->link_github;
+        $project->project_date = $request->project_date;
         $project->status = "inactive";
         if($request->is_published) $project->status = "active";
 
