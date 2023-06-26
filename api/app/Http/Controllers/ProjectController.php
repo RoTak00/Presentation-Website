@@ -17,7 +17,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all()->reverse();
+        $projects = Project::orderBy('ordering', 'desc')->get();
         return view('projects.index', ['projects'=>$projects]);
     }
 
@@ -25,9 +25,9 @@ class ProjectController extends Controller
     {
         $projects = null;
         if($limit == null)
-            $projects = Project::where('status', 'active')->orderBy('created_at', 'desc')->get();
+            $projects = Project::where('status', 'active')->orderBy('ordering', 'desc')->get();
         else
-            $projects = Project::where('status', 'active')->orderBy('created_at', 'desc')->take($limit)->get();
+            $projects = Project::where('status', 'active')->orderBy('ordering', 'desc')->take($limit)->get();
 
         foreach($projects as $item)
         {
@@ -37,6 +37,36 @@ class ProjectController extends Controller
 
         return response()->json(['data'=>$projects, 'count'=>count($projects)]);
 
+    }
+
+    public function reorder(Request $request)
+    {
+        $projects = Project::orderBy('ordering', 'asc')->get();
+
+        $project_ids = [];
+
+        for ($i = 0; $i < count($projects); $i++) {
+            $project_ids[] = $projects[$i]->id;
+        }
+
+        $move_from_position = Project::find($request->id)->ordering;
+        $move_before_position = $request->new_order;
+
+        $do_minus_one = $move_from_position < $move_before_position;
+
+
+        $element = array_splice($project_ids, $move_from_position -1 , 1);
+
+        array_splice($project_ids, $move_before_position - 1 - ($do_minus_one ? 1 : 0), 0, $element);
+
+        for($i = 0; $i < count($project_ids); $i++)
+        {
+            $project = Project::find($project_ids[$i]);
+            $project->ordering = $i + 1;
+            $project->save();
+        }
+
+        return redirect()->back();
     }
 
     /**

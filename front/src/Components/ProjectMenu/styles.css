@@ -4,25 +4,27 @@
   justify-content: center; }
   .project-container-title h2 {
     text-align: center;
-    font-size: 4rem;
-    font-family: 'Videotype', sans-serif;
-    margin-top: 2rem;
-    margin-bottom: 1.5rem; }
+    font-size: 5rem;
+    line-height: 4.8rem;
+    letter-spacing: -0.15rem;
+    font-family: 'Videotype', sans-serif; }
 .project-container-description {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  padding-top: 2rem; }
   .project-container-description p {
     font-size: 2rem;
-    margin-bottom: 2.5rem;
+    letter-spacing: -0.05rem;
     color: #280831;
     max-width: 80vw;
     text-align: center; }
     .project-container-description p > a {
-      font-size: 1.5rem;
-      margin-bottom: 2.5rem;
       color: #280831;
-      max-width: 60vw;
-      text-align: center; }
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.2s ease; }
+      .project-container-description p > a:hover {
+        color: #660166; }
 
 /*# sourceMappingURL=styles.css.map */

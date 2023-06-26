@@ -35,10 +35,15 @@
 
     & div:nth-of-type(3)
     {
-        flex-grow: 1;
+        width: 10%;
     }
 
     & div:nth-of-type(4)
+    {
+        flex-grow: 1;
+    }
+
+    & div:nth-of-type(5)
     {
         width: 3%;
     }
@@ -62,6 +67,17 @@
 
     & div.project-inactive {
         background-color: red;
+    }
+
+    & select 
+    {
+        display: block;
+        width: 100px;
+
+        & option 
+        {
+            font-size: 18px;
+        }
     }
 }
 

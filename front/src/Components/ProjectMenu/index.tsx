@@ -103,18 +103,11 @@ const ProjectMenu = () => {
             className={descriptionAnimationClasses}
           >
             Have a little peek at my latest projects, whether they're tech or
-            not.
+            not.<br/><a href="/projects">Click to see the project archive</a>
           </p>
         </div>
 
-        <div className="project-container-description">
-          <p
-            style={{ animationDelay: "0.6s" }}
-            className={descriptionAnimationClasses}
-          >
-            <a href="/projects">Find the project archive here</a>
-          </p>
-        </div>
+       
       </div>
       <Row className="project-menu-row">
         {projects?.map((el, index, arr) => (

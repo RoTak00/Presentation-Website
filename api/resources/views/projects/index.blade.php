@@ -10,6 +10,7 @@
         <div class="project-index-container header">
             <div> ID </div>
             <div> Title </div>
+            <div> Order wip </div>
             <div class="actions"> Actions </div>
             <div> Up </div>
         </div>
@@ -32,6 +33,23 @@
 
                 <div>
                     <strong> {{ $p->title }} </strong>
+                </div>
+
+                <div>
+                    <strong>{{$p->ordering}}</strong>
+                    <form method = "POST" action={{ route('projects.reorder') }}>
+                        @csrf
+                    <input type = "hidden" name = "id" value = {{ $p->id }}>
+                    <select name = "new_order" id = "new_order">
+                        @foreach ($projects as $p_ordering)
+                        <?php if ($p_ordering->id == $p->id) continue; ?>
+                            
+                            <option value="{{(int)$p_ordering->ordering + 1}}" <?= $p_ordering->ordering == $p->ordering - 1 ? 'selected' : '' ?>
+                            >Before {{ $p_ordering->title }}</option>
+                        @endforeach
+                        <option value = "1" <?= $p->ordering == 1 ? 'selected' : '' ?>> Last </option>
+                    </select>
+                    <button type = "submit"> Change </button>
                 </div>
 
                 <div class="actions">

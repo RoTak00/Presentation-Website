@@ -17,8 +17,10 @@
   .project-index-container div:nth-of-type(2) {
     width: 20%; }
   .project-index-container div:nth-of-type(3) {
-    flex-grow: 1; }
+    width: 10%; }
   .project-index-container div:nth-of-type(4) {
+    flex-grow: 1; }
+  .project-index-container div:nth-of-type(5) {
     width: 3%; }
   .project-index-container div.actions {
     justify-content: flex-start; }
@@ -30,5 +32,10 @@
     background-color: green; }
   .project-index-container div.project-inactive {
     background-color: red; }
+  .project-index-container select {
+    display: block;
+    width: 100px; }
+    .project-index-container select option {
+      font-size: 18px; }
 
 /*# sourceMappingURL=projects.css.map */
