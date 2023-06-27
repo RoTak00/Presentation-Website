@@ -5,7 +5,7 @@ import NavigationBar from "../Components/Navigation";
 
 import "./styles/ProjectsScreen.css";
 import { useCallback, useEffect, useState } from "react";
-import { getProjectsPaginated } from "../Utils/API";
+import { getProjectsPaginated, projectAction } from "../Utils/API";
 import { ProjectType } from "../Utils/Types";
 import ProjectPageCell from "../Components/ProjectPageCell";
 import PageCell from "../Components/PageCell";
@@ -33,6 +33,12 @@ const ProjectsScreen = () => {
     setPages(projects.data.pages);
     setProjectsLoaded(true);
     setPaginationNumbers(generatePaginationNumbers(page, projects.data.pages));
+
+    for (let project of projects.data.data)
+    {
+      projectAction(project.id as number, "view_page");
+    }
+    
   }, [page]);
 
   useEffect(() => {

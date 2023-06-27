@@ -44,4 +44,17 @@ const getProjectsPaginated = async (limit: number, page: number) => {
   }
 };
 
-export { postUserMessage, getProjects, getProjectsPaginated };
+
+const projectAction = async(id: number, action: string) => {
+  try {
+    const response = await axios.post(
+      `${API_PATH}/stats/projects`, {id:id, action:action}
+    );
+    return response;
+  } catch (error) {
+    console.error("Error updating project stats:", error);
+    return null;
+  }
+}
+
+export { postUserMessage, getProjects, getProjectsPaginated, projectAction };

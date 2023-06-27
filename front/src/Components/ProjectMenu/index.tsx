@@ -3,7 +3,7 @@ import { ProjectType } from "../../Utils/Types";
 import ProjectCell from "../ProjectCell";
 import "./styles.css";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getProjects } from "../../Utils/API";
+import { getProjects, projectAction } from "../../Utils/API";
 import useIsInViewport from "../../Utils/IsInViewport";
 import useFadeIn from "../../Utils/fadeIn";
 
@@ -59,8 +59,11 @@ const ProjectMenu = () => {
   };
 
   const handleModalOpened = (modalIndex: number) => {
-    if (!projectsLoaded) return;
+    if (!projectsLoaded || !projects) return;
     setModalShown(modalIndex);
+
+    projectAction(projects[modalIndex].id as number, "view_home");
+    
   };
 
   const titleRowRef = useRef(null);

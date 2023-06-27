@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('page_title')
-    Projects
+    Blog Posts
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
             <div> Up </div>
         </div>
 
-        @foreach ($projects as $p)
+        @foreach ($blog_posts as $p)
             <?php
             $statusClass = 'project-deleted';
             if ($p['status'] === 'inactive') {
@@ -39,11 +39,11 @@
 
                 <div>
                     <strong>{{$p->ordering}}</strong>
-                    <form method = "POST" action={{ route('projects.reorder') }}>
+                    <form method = "POST" action={{ route('blog.reorder') }}>
                         @csrf
                     <input type = "hidden" name = "id" value = {{ $p->id }}>
                     <select name = "new_order" id = "new_order">
-                        @foreach ($projects as $p_ordering)
+                        @foreach ($blog_posts as $p_ordering)
                         <?php if ($p_ordering->id == $p->id) continue; ?>
                             
                             <option value="{{(int)$p_ordering->ordering + 1}}" <?= $p_ordering->ordering == $p->ordering - 1 ? 'selected' : '' ?>
@@ -52,22 +52,22 @@
                         <option value = "1" <?= $p->ordering == 1 ? 'selected' : '' ?>> Last </option>
                     </select>
                     <button type = "submit"> Change </button>
-                </form>
+                    </form>
                 </div>
 
                 <div>
-                    {{ $p->home_clicks + $p->dedicated_page_clicks }} / {{$p->home_link_clicks + $p->dedicated_page_link_clicks}}
+                    -
                 </div>
 
                 <div class="actions">
 
-                    <form action={{ route('projects.edit', ['project' => $p->id]) }}>
+                    <form action={{ route('blog.edit', ['blog' => $p->id]) }}>
                         <button type="submit"> Edit
                         </button>
                     </form>
 
 
-                    <form method="POST" action={{ route('projects.destroy', ['project' => $p->id]) }}>
+                    <form method="POST" action={{ route('blog.destroy', ['blog' => $p->id]) }}>
                         @csrf
                         @method('DELETE')
                         <button type="submit"> Remove </button>
@@ -82,8 +82,10 @@
 
         <div class="project-index-container new">
             <div> </div>
-            <div> <a href="{{ route('projects.create') }}">Create new Project</a> </div>
+            <div> <a href="{{ route('blog.create') }}">Create new Blog Post</a> </div>
             <div class="actions"> </div>
+            <div> </div>
+            <div> </div>
             <div> </div>
         </div>
     </div>

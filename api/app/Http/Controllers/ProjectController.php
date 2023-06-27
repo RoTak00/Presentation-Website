@@ -80,7 +80,7 @@ class ProjectController extends Controller
      */
     public function api_get_paginated($page, $limit)
     {
-        $projects = Project::where('status', 'active')->orderBy('created_at', 'desc');
+        $projects = Project::where('status', 'active')->orderBy('ordering', 'desc');
         $pages = ceil($projects->count() / $limit);
         $projects = $projects->offset(($page-1) * $limit);
         $projects = $projects->take($limit);
@@ -154,6 +154,9 @@ class ProjectController extends Controller
         $newProject->link = $request->link;
         $newProject->link_github = $request->link_github;
         $newProject->project_date = $request->project_date;
+
+
+        $newProject->ordering = Project::orderBy('ordering', 'desc')->first()->ordering??0+ 1;
 
         $newProject->status = "inactive";
         if($request->is_published) $newProject->status = "active";

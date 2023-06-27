@@ -4,6 +4,7 @@ import "./styles.css";
 import { useRef, useState } from "react";
 import useIsInViewport from "../../Utils/IsInViewport";
 import useFadeIn from "../../Utils/fadeIn";
+import { projectAction } from "../../Utils/API";
 
 type Props = {
   data: ProjectType;
@@ -100,8 +101,10 @@ const ProjectCell: React.FC<Props> = ({
         <div className="project-modal-buttons">
           {data.link ? (
             <Button
-              href={data.link ?? "#"}
-              target="_blank"
+              onClick={() => {
+                projectAction(data.id as number, "click_home");
+                window.open(data.link);}}
+              
               variant="primary"
               className="button-checkitout"
             >
@@ -110,8 +113,9 @@ const ProjectCell: React.FC<Props> = ({
           ) : null}
           {data.link_github ? (
             <Button
-              href={data.link_github ?? "#"}
-              target="_blank"
+            onClick={() => {
+              projectAction(data.id as number, "click_home");
+              window.open(data.link_github);}}
               variant="primary"
               className="button-checkitout"
             >

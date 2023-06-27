@@ -37,6 +37,9 @@
             <form action="/gallery">
                 <button type="submit">Gallery</button>
             </form>
+            <form action="/blog">
+                <button type="submit">Blog</button>
+            </form>
 
         </div>
 

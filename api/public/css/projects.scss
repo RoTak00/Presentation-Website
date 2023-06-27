@@ -40,10 +40,15 @@
 
     & div:nth-of-type(4)
     {
-        flex-grow: 1;
+        width: 10%;
     }
 
     & div:nth-of-type(5)
+    {
+        flex-grow: 1;
+    }
+
+    & div:nth-of-type(6)
     {
         width: 3%;
     }
