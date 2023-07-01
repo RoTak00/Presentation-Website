@@ -280,7 +280,18 @@ class BlogPostController extends Controller
             File::delete($old_path);
         }
 
+
+        $blog_post->tag()->delete();
+        
         $blog_post->delete();
+
+        $blog_posts = BlogPost::orderBy('ordering', 'asc')->get();
+        
+        for($i = 0; $i < count($blog_posts); $i++)
+        {
+            $blog_posts[$i]->ordering = $i + 1;
+            $blog_posts[$i]->save();
+        }
 
         return redirect('blog');
     }

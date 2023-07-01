@@ -156,7 +156,7 @@ class ProjectController extends Controller
         $newProject->project_date = $request->project_date;
 
 
-        $newProject->ordering = Project::orderBy('ordering', 'desc')->first()->ordering??0+ 1;
+        $newProject->ordering = (Project::orderBy('ordering', 'desc')->first()->ordering??0)+ 1;
 
         $newProject->status = "inactive";
         if($request->is_published) $newProject->status = "active";
@@ -288,7 +288,17 @@ class ProjectController extends Controller
             File::delete($old_path);
         }
 
+        $project->tag()->delete();
+
         $project->delete();
+
+        $projects = Project::orderBy('ordering', 'asc')->get();
+        
+        for($i = 0; $i < count($projects); $i++)
+        {
+            $projects[$i]->ordering = $i + 1;
+            $projects[$i]->save();
+        }
 
         return redirect('projects');
     }
