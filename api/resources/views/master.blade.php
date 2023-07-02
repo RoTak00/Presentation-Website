@@ -10,10 +10,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-    <link href="/css/home.css" rel="stylesheet" />
-    <link href="/css/projects.css" rel="stylesheet" />
+    <link href="{{asset('/css/home.css')}}" rel="stylesheet" />
+    <link href="{{asset('/css/projects.css')}}" rel="stylesheet" />
 
-    <link href="/css/messages.css" rel="stylesheet" />
+    <link href="{{asset('/css/messages.css')}}" rel="stylesheet" />
 
 </head>
 

@@ -5,8 +5,11 @@
   justify-content: center; }
   .contact-icons-title-row h2 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: 'Videotype', sans-serif; }
+    @media (max-width: 992px) {
+      .contact-icons-title-row h2 {
+        font-size: 2rem; } }
 
 .contact-icons-wrapper {
   display: flex;

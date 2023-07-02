@@ -75,6 +75,9 @@
   .project-modal .project-modal-title > h2 {
     font-size: 3rem;
     color: #eeeeee; }
+    @media (max-width: 992px) {
+      .project-modal .project-modal-title > h2 {
+        font-size: 1rem; } }
 .project-modal .project-modal-description {
   display: flex;
   justify-content: center;
