@@ -85,33 +85,6 @@ const ProjectMenu = () => {
   );
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        justifyContent: "space-around",
-        flexDirection: "column",
-        scrollSnapAlign: "start",
-      }}
-    >
-      <div>
-        <div className="project-container-title">
-          <h2 ref={titleRowRef} className={titleAnimationClasses}>
-            My Projects
-          </h2>
-        </div>
-        <div ref={descriptionRowRef} className="project-container-description">
-          <p
-            style={{ animationDelay: "0.4s" }}
-            className={descriptionAnimationClasses}
-          >
-            Have a little peek at my latest projects, whether they're tech or
-            not.<br/><a href="/projects">Click to see the project archive</a>
-          </p>
-        </div>
-
-       
-      </div>
       <Row className="project-menu-row">
         {projects?.map((el, index, arr) => (
           <ProjectCell
@@ -126,7 +99,6 @@ const ProjectMenu = () => {
           />
         ))}
       </Row>
-    </div>
   );
 };
 

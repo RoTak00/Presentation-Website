@@ -49,6 +49,7 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
       <div className="links">
         {project.link_github ? (
           <a
+          href="/"
             onClick={(e) => {
               e.preventDefault();
               projectAction(project.id as number, "click_page");
@@ -60,7 +61,7 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
           </a>
         ) : null}
         {project.link ? (
-          <a onClick={(e) => {
+          <a href="/" onClick={(e) => {
             e.preventDefault();
             projectAction(project.id as number, "click_page");
             window.open(project.link, "_blank");

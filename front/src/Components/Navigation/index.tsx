@@ -18,7 +18,7 @@ const NavigationBar: React.FC<Props> = ({ brand_text, brand_delay }) => {
       <Row className="h-100">
         <Col xs={12} lg={6} className="brand">
           <BrandName
-            text={brand_text ?? "Robert\xA0Takacs   "}
+            text={brand_text ?? "-\xA0Web\xA0Developer  "}
             delay={brand_delay ?? 250}
           />
         </Col>

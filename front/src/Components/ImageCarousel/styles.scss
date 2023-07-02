@@ -1,5 +1,5 @@
 .carousel{
-    height: calc(95vh - 80px);
+    height: calc(100vh - 80px);
     position: relative;
     overflow: hidden;
     
@@ -26,13 +26,13 @@
                 animation-name: fadein;
                 animation-timing-function: ease-in-out;
                 animation-fill-mode: forwards;
-                animation-duration: 0.7s;
+                animation-duration: 0.5s;
             }
 
             @keyframes fadein
             {
                 0%{
-                    opacity: 0.6;
+                    opacity: 0.9;
                 }
                 100%{
                     opacity: 1;

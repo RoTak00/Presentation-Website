@@ -28,12 +28,7 @@ const ProjectCell: React.FC<Props> = ({
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
   const cellRef = useRef(null);
-  const isCellInViewport = useIsInViewport(cellRef);
-  const animationClasses = useFadeIn(
-    isCellInViewport,
-    "toFadeIn",
-    "fadingInLeft"
-  );
+  
 
 
   const animationDelay = `${(cellArrayLength - cellIndex + 1) * 0.2}s`;
@@ -45,9 +40,9 @@ const ProjectCell: React.FC<Props> = ({
   return (
     <>
       <Col
-        xs="6"
-        lg="3"
-        className={`project-menu-cell ${animationClasses}`}
+        xs="12"
+        lg="6"
+        className={`project-menu-cell`}
         style={{
           paddingLeft: 0,
           paddingRight: 0,

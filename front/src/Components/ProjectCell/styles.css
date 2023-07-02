@@ -5,13 +5,13 @@
   padding-left: 0;
   padding-right: 0;
   cursor: pointer;
-  height: 50vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center; }
   @media (min-width: 992px) {
     .project-menu-cell {
-      height: 25vw; } }
+      height: 30vw; } }
   .project-menu-cell > img {
     width: 80%;
     height: 80%;
