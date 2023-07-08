@@ -25,18 +25,15 @@ const ProjectCell: React.FC<Props> = ({
   cellIndex,
   cellArrayLength,
 }) => {
-  const [isHovering, setIsHovering] = useState<boolean>(false);
-
   const cellRef = useRef(null);
-  
-
 
   const animationDelay = `${(cellArrayLength - cellIndex + 1) * 0.2}s`;
 
-
   const tagsTSX = data.tags?.map((tag) => (
-    <div className = "tag">{tag.tag_name}</div>
+    <div className="tag">{tag.tag_name}</div>
   ));
+
+  const [isHovering, setIsHovering] = useState(false);
   return (
     <>
       <Col
@@ -55,11 +52,9 @@ const ProjectCell: React.FC<Props> = ({
       >
         <img src={data.image ?? ""} alt={data.title}></img>
 
-        {data.tags ? (<div className = {"project-menu-tags"}>{tagsTSX}</div>) : null}
-        
-
-        {isHovering ? (
-          <div className="project-menu-hover">Find out more!</div>
+        <div className={"project-menu-title"}>{data.title}</div>
+        {data.tags ? (
+          <div className={"project-menu-tags"}>{tagsTSX}</div>
         ) : null}
       </Col>
 
@@ -86,11 +81,12 @@ const ProjectCell: React.FC<Props> = ({
         </div>
         <Modal.Body className="project-modal-description">
           <div>{data.description}</div>
-          
         </Modal.Body>
         <Modal.Body className="project-modal-description tags">
           <div>
-          {data.tags ? (<div className = {"project-menu-tags static"}>{tagsTSX}</div>) : null}
+            {data.tags ? (
+              <div className={"project-menu-tags static"}>{tagsTSX}</div>
+            ) : null}
           </div>
         </Modal.Body>
         <div className="project-modal-buttons">
@@ -98,8 +94,8 @@ const ProjectCell: React.FC<Props> = ({
             <Button
               onClick={() => {
                 projectAction(data.id as number, "click_home");
-                window.open(data.link);}}
-              
+                window.open(data.link);
+              }}
               variant="primary"
               className="button-checkitout"
             >
@@ -108,9 +104,10 @@ const ProjectCell: React.FC<Props> = ({
           ) : null}
           {data.link_github ? (
             <Button
-            onClick={() => {
-              projectAction(data.id as number, "click_home");
-              window.open(data.link_github);}}
+              onClick={() => {
+                projectAction(data.id as number, "click_home");
+                window.open(data.link_github);
+              }}
               variant="primary"
               className="button-checkitout"
             >

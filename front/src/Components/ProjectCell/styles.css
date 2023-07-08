@@ -1,11 +1,8 @@
 .project-menu-cell {
   position: relative;
-  background-image: linear-gradient(#280831, #400d4e);
-  border: 2px solid black;
-  padding-left: 0;
-  padding-right: 0;
+  background-color: #280831;
   cursor: pointer;
-  height: 100vh;
+  height: 75vh;
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -13,8 +10,8 @@
     .project-menu-cell {
       height: 30vw; } }
   .project-menu-cell > img {
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center; }
   .project-menu-cell > .project-menu-hover {
@@ -27,7 +24,7 @@
     right: 15%;
     height: 10%;
     color: #ffffff;
-    font-family: 'Videotype', sans-serif;
+    font-family: "Videotype", sans-serif;
     font-size: 1.5rem;
     opacity: 0;
     animation: fadeInHover 0.15s ease both; }
@@ -42,11 +39,13 @@
 .project-menu-tags {
   display: flex;
   position: absolute;
-  top: 0em;
-  left: 1em;
-  right: 1em;
+  bottom: 0;
+  left: 0;
+  right: 0;
   flex-direction: row;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  padding: 10px;
+  background-color: #28083188; }
   .project-menu-tags.static {
     position: static; }
   .project-menu-tags > .tag {
@@ -55,11 +54,24 @@
     background-color: #ffffffbb;
     color: #280831;
     border-radius: 1rem;
-    font-family: 'Videotype', sans-serif;
+    font-family: "Videotype", sans-serif;
     font-size: 1em; }
     @media (max-width: 992px) {
       .project-menu-tags > .tag {
         font-size: 0.75em; } }
+
+.project-menu-title {
+  font-family: "Rajdhani", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fefefe;
+  font-size: 30px;
+  padding-left: 20px;
+  font-weight: 500;
+  background-color: #28083188; }
 
 .project-modal .modal-content {
   background-color: #eeeeeebb !important; }
@@ -67,7 +79,7 @@
   position: relative;
   padding-top: 2%;
   padding-bottom: 1%;
-  font-family: 'Videotype', sans-serif;
+  font-family: "Videotype", sans-serif;
   text-align: center;
   width: 100%;
   height: 6rem;
@@ -119,7 +131,7 @@
   cursor: pointer;
   --bs-btn-bg: #280831 !important;
   --bs-btn-border-color: #190152 !important;
-  --bs-btn-hover-bg: #4b0f5c!important;
+  --bs-btn-hover-bg: #4b0f5c !important;
   --bs-btn-hover-border-color: #190152 !important;
   --bs-btn-active-bg: #4b0f5c !important;
   --bs-btn-active-border-color: #3200a8 !important; }
@@ -154,8 +166,5 @@
     background-color: darkred;
     border-color: white;
     transition: color 0.2s, background-color 0.2s, border 0.3s; }
-
-.nogutter {
-  --bs-gutter-x: 0 !important; }
 
 /*# sourceMappingURL=styles.css.map */

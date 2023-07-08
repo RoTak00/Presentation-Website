@@ -63,7 +63,6 @@ const ProjectMenu = () => {
     setModalShown(modalIndex);
 
     projectAction(projects[modalIndex].id as number, "view_home");
-    
   };
 
   const titleRowRef = useRef(null);
@@ -85,20 +84,20 @@ const ProjectMenu = () => {
   );
 
   return (
-      <Row className="project-menu-row">
-        {projects?.map((el, index, arr) => (
-          <ProjectCell
-            key={"project-" + index}
-            cellIndex={index}
-            cellArrayLength={arr.length}
-            data={el}
-            showModal={index === modalShown}
-            handleModalClose={handleModalClosed}
-            handleModalOpened={() => handleModalOpened(index)}
-            disabled={projectsLoaded}
-          />
-        ))}
-      </Row>
+    <Row className="project-menu-row">
+      {projects?.map((el, index, arr) => (
+        <ProjectCell
+          key={"project-" + index}
+          cellIndex={index}
+          cellArrayLength={arr.length}
+          data={el}
+          showModal={index === modalShown}
+          handleModalClose={handleModalClosed}
+          handleModalOpened={() => handleModalOpened(index)}
+          disabled={projectsLoaded}
+        />
+      ))}
+    </Row>
   );
 };
 

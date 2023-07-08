@@ -10,6 +10,8 @@ import { ProjectType } from "../Utils/Types";
 import ProjectPageCell from "../Components/ProjectPageCell";
 import PageCell from "../Components/PageCell";
 import { generatePaginationNumbers } from "../Utils/Helpers";
+import BrandName from "../Components/BrandName";
+import SideMenu from "../Components/SideMenu";
 
 const ProjectsScreen = () => {
   let { pageParam } = useParams();
@@ -34,11 +36,9 @@ const ProjectsScreen = () => {
     setProjectsLoaded(true);
     setPaginationNumbers(generatePaginationNumbers(page, projects.data.pages));
 
-    for (let project of projects.data.data)
-    {
+    for (let project of projects.data.data) {
       projectAction(project.id as number, "view_page");
     }
-    
   }, [page]);
 
   useEffect(() => {
@@ -52,7 +52,10 @@ const ProjectsScreen = () => {
         backgroundRepeat: "repeat-y",
       }}
     >
-      <NavigationBar />
+      <NavigationBar isBlock={true}>
+        <BrandName text={"-\xA0Web\xA0Developer  "} delay={250} />
+        <SideMenu />
+      </NavigationBar>
       <div className="projects-title">
         <h2>Projects</h2>
       </div>

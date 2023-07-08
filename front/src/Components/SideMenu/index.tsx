@@ -1,10 +1,27 @@
 import { useState } from "react";
 import "./styles.css";
 
-type Props = {};
+type Props = {
+  children?: React.ReactNode;
+};
 
-const SideMenu: React.FC<Props> = ({}) => {
+const SideMenu: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const links = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Projects",
+      link: "/projects",
+    },
+    {
+      name: "Contact",
+      link: "/contact",
+    },
+  ];
 
   const handleClick = () => {
     setIsOpen((isOpen) => !isOpen);
@@ -17,12 +34,11 @@ const SideMenu: React.FC<Props> = ({}) => {
 
       {isOpen ? (
         <div className="side-menu">
-          <ul>
-            <li>Item1</li>
-            <li>Item2</li>
-            <li>Item3</li>
-            <li>Item4</li>
-          </ul>
+          {links.map((link) => (
+            <a key={link.name} href={link.link}>
+              {link.name}
+            </a>
+          ))}
         </div>
       ) : null}
     </>
