@@ -8,6 +8,7 @@ import Container2 from "../Components/ESN_Application/Container2";
 import Container3 from "../Components/ESN_Application/Container3";
 import Container4 from "../Components/ESN_Application/Container4";
 import Container0 from "../Components/ESN_Application/Container0";
+import BrandName from "../Components/BrandName";
 
 const ErasmusApplicationScreen = () => {
   return (
@@ -18,10 +19,9 @@ const ErasmusApplicationScreen = () => {
           backgroundRepeat: "repeat-y",
         }}
       >
-        <NavigationBar
-          brand_text={"ESN\xA0UniBucharest\xA0-\xA0Takacs Robert   "}
-          brand_delay={150}
-        />
+        <NavigationBar>
+          <BrandName text={"-\xA0Web\xA0Developer  "} delay={250} />
+        </NavigationBar>
 
         <Container0 />
         <Container1 />

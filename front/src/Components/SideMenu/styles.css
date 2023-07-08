@@ -1,17 +1,27 @@
-div.wrapper {
+div.side-menu-button {
   position: absolute;
-  top: 80px;
-  right: 0px;
-  width: 25vw;
-  height: calc(80vh - 80px);
-  background-color: #00000033; }
-  @media (max-width: 992px) {
-    div.wrapper {
-      top: 0px;
-      right: 160px;
-      height: 80vh;
-      width: 100vw; } }
-  div.wrapper.locked {
-    background-color: #00000066; }
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  cursor: pointer;
+  aspect-ratio: 1/1; }
+  div.side-menu-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; }
+
+div.side-menu {
+  background-color: #00000088;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  height: calc(100vh - 100%);
+  width: 20vw; }
 
 /*# sourceMappingURL=styles.css.map */

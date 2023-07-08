@@ -1,33 +1,12 @@
 .navbar-wrapper {
-  background-color: #000000;
+  background-color: #00000088;
   width: 100%;
-  border-bottom: 5px solid black;
   box-sizing: content-box;
   padding: 5px 0px;
-  position: relative; }
-  .navbar-wrapper > .navbar-effect {
-    position: absolute;
-    bottom: -5px;
-    height: 5px;
-    transform: skewX(-45deg);
-    width: 0;
-    background-color: #68157e;
-    animation: animateWidth 2s linear both;
-    animation-iteration-count: infinite;
-    animation-direction: alternate; }
-@keyframes animateWidth {
-  0% {
-    width: 0;
-    left: 5%; }
-  25% {
-    width: 20%;
-    left: 5%; }
-  75% {
-    width: 20%;
-    left: 75%; }
-  100% {
-    width: 0;
-    left: 95%; } }
+  position: absolute;
+  top: 0;
+  width: 100vw; }
+
 .brand {
   display: flex;
   justify-content: left;
@@ -36,15 +15,15 @@
   font-size: 38px;
   color: white;
   margin-left: 20px;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   font-weight: 400; }
   @media (max-width: 992px) {
     .brand {
       justify-content: center;
       margin-left: 0px;
-      font-size: 28px; } }
+      font-size: 34px; } }
   @media (max-width: 600px) {
     .brand {
-      font-size: 22px; } }
+      font-size: 28px; } }
 
 /*# sourceMappingURL=styles.css.map */

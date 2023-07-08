@@ -7,9 +7,10 @@ import { CarouselImageType } from "../../Utils/Types";
 type Props = {
   images: CarouselImageType[];
   delay: number;
+  children: React.ReactNode;
 };
 
-const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
+const ImageCarousel: React.FC<Props> = ({ children, images, delay }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   let imageInterval: React.MutableRefObject<NodeJS.Timer | undefined> =
@@ -57,6 +58,8 @@ const ImageCarousel: React.FC<Props> = ({ images, delay }) => {
           alt="Takacs Robert Logo"
         />
       </div>
+
+      {children}
     </div>
   );
 };

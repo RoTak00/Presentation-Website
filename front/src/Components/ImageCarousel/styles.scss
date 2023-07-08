@@ -1,87 +1,71 @@
-.carousel{
-    height: calc(100vh - 80px);
-    position: relative;
-    overflow: hidden;
-    
-    @media(max-width:992px)
-    {
-        height: calc(100vh - 80px);
-    }
+.carousel {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
 
-    & > div.carousel-image-wrapper{
-
-        width: 100%;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-
-        & > img.image{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-
-            &--fadein
-            {
-                animation-name: fadein;
-                animation-timing-function: ease-in-out;
-                animation-fill-mode: forwards;
-                animation-duration: 0.5s;
-            }
-
-            @keyframes fadein
-            {
-                0%{
-                    opacity: 0.9;
-                }
-                100%{
-                    opacity: 1;
-                }
-            }
-
-            
-        }
-    }
-
-}
-
-.nodisplay
-{
-    display: none;
-}
-
-.carousel > .carousel-brand
-{
-    position: absolute;
+  & > div.carousel-image-wrapper {
     width: 100%;
     height: 100%;
-    top:0;
-    left:0;
+    position: relative;
+    overflow: hidden;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    & > img.image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
 
-    font-size: 100px;
-    color: #280381;
-    font-family: Videotype;
-    
-    & img {
-        width: 30%;
+      &--fadein {
+        animation-name: fadein;
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;
+        animation-duration: 0.5s;
+      }
 
-        @media (max-width: 1200px)
-        {
-            width: 40%;
+      @keyframes fadein {
+        0% {
+          opacity: 0.9;
         }
-
-        @media (max-width: 992px)
-        {
-            width: 55%;
+        100% {
+          opacity: 1;
         }
-
-        @media (max-width: 800px)
-        {
-            width: 65%;
-        }
+      }
     }
+  }
+}
+
+.nodisplay {
+  display: none;
+}
+
+.carousel > .carousel-brand {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 100px;
+  color: #280381;
+  font-family: Videotype;
+
+  & img {
+    width: 30%;
+
+    @media (max-width: 1200px) {
+      width: 40%;
+    }
+
+    @media (max-width: 992px) {
+      width: 55%;
+    }
+
+    @media (max-width: 800px) {
+      width: 65%;
+    }
+  }
 }

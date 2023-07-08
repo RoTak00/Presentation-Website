@@ -3,24 +3,17 @@ import { Row, Col } from "react-bootstrap";
 
 import "./styles.css";
 
-import BrandName from "../BrandName";
-import useMediaQuery from "../../Utils/MediaQuery";
-
 type Props = {
-  brand_text?: string;
-  brand_delay?: number;
+  children?: React.ReactNode;
 };
-const NavigationBar: React.FC<Props> = ({ brand_text, brand_delay }) => {
+const NavigationBar: React.FC<Props> = ({ children }) => {
   //const lg = useMediaQuery("(min-width: 992px)");
 
   return (
-    <div className="navbar-wrapper" style={{ scrollSnapAlign: "start" }}>
+    <div className="navbar-wrapper">
       <Row className="h-100">
         <Col xs={12} lg={6} className="brand">
-          <BrandName
-            text={brand_text ?? "-\xA0Web\xA0Developer  "}
-            delay={brand_delay ?? 250}
-          />
+          {children}
         </Col>
       </Row>
 
