@@ -38,15 +38,18 @@
   color: #280381;
   font-family: Videotype; }
   .carousel > .carousel-brand img {
-    width: 30%; }
-    @media (max-width: 1200px) {
+    width: min(90vw, 75vh); }
+    @media (min-width: 576px) {
       .carousel > .carousel-brand img {
-        width: 40%; } }
-    @media (max-width: 992px) {
+        width: min(75vw, 75vh); } }
+    @media (min-width: 768px) {
       .carousel > .carousel-brand img {
-        width: 55%; } }
-    @media (max-width: 800px) {
+        width: min(60vw, 75vh); } }
+    @media (min-width: 992px) {
       .carousel > .carousel-brand img {
-        width: 65%; } }
+        width: min(45vw, 60vh); } }
+    @media (min-width: 1200px) {
+      .carousel > .carousel-brand img {
+        width: min(35vw, 60vh); } }
 
 /*# sourceMappingURL=styles.css.map */

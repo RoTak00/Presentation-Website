@@ -2,32 +2,41 @@ import { useState, useEffect } from "react";
 
 import "./styles.css";
 type Props = {
-  text: string;
+  animateText: string;
   delay: number;
+  staticText: string;
+  breakLine: boolean;
 };
 
-const BrandName: React.FC<Props> = ({ text, delay }) => {
+const BrandName: React.FC<Props> = ({
+  animateText,
+  staticText,
+  breakLine,
+  delay,
+}) => {
   const [brandEffectIndex, setBrandEffectIndex] = useState<number>(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setBrandEffectIndex(
         (currentIndex) =>
-          (currentIndex + 1 + (text[currentIndex] === "\xA0" ? 1 : 0)) %
-          (text.length + 1)
+          (currentIndex + 1 + (animateText[currentIndex] === "\xA0" ? 1 : 0)) %
+          (animateText.length + 1)
       );
     }, delay);
 
     return () => clearInterval(interval);
-  }, [text, delay]);
+  }, [animateText, delay]);
 
   return (
-    <>
+    <span>
+      <span className="color1">{staticText}</span>
+      {breakLine ? <br /> : " - "}
       <span className="color1" onClick={() => (window.location.href = "/")}>
-        {"Robert Takacs\xA0" + text.slice(0, brandEffectIndex)}
+        {animateText.slice(0, brandEffectIndex)}
       </span>
-      <span className="color2">{text.slice(brandEffectIndex)}</span>
-    </>
+      <span className="color2">{animateText.slice(brandEffectIndex)}</span>
+    </span>
   );
 };
 

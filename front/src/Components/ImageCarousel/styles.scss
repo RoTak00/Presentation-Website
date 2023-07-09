@@ -54,18 +54,22 @@
   font-family: Videotype;
 
   & img {
-    width: 30%;
+    width: min(90vw, 75vh);
 
-    @media (max-width: 1200px) {
-      width: 40%;
+    @media (min-width: 576px) {
+      width: min(75vw, 75vh);
     }
 
-    @media (max-width: 992px) {
-      width: 55%;
+    @media (min-width: 768px) {
+      width: min(60vw, 75vh);
     }
 
-    @media (max-width: 800px) {
-      width: 65%;
+    @media (min-width: 992px) {
+      width: min(45vw, 60vh);
+    }
+
+    @media (min-width: 1200px) {
+      width: min(35vw, 60vh);
     }
   }
 }

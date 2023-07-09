@@ -12,6 +12,7 @@ import PageCell from "../Components/PageCell";
 import { generatePaginationNumbers } from "../Utils/Helpers";
 import BrandName from "../Components/BrandName";
 import SideMenu from "../Components/SideMenu";
+import useMediaQuery from "../Utils/MediaQuery";
 
 const ProjectsScreen = () => {
   let { pageParam } = useParams();
@@ -45,6 +46,12 @@ const ProjectsScreen = () => {
     loadProjects();
   }, [loadProjects]);
 
+  let dim = 0;
+  if (useMediaQuery("(min-width: 576px)")) dim = 1;
+  if (useMediaQuery("(min-width: 768px)")) dim = 2;
+  if (useMediaQuery("(min-width: 992px)")) dim = 3;
+  if (useMediaQuery("(min-width: 1200px)")) dim = 4;
+
   return (
     <div
       style={{
@@ -53,7 +60,12 @@ const ProjectsScreen = () => {
       }}
     >
       <NavigationBar isBlock={true}>
-        <BrandName text={"-\xA0Web\xA0Developer  "} delay={250} />
+        <BrandName
+          staticText={"Robert Takacs"}
+          breakLine={dim < 1}
+          animateText={"Web\xA0Developer  "}
+          delay={250}
+        />
         <SideMenu />
       </NavigationBar>
       <div className="projects-title">

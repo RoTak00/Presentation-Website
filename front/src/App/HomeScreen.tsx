@@ -11,6 +11,7 @@ import CustomFooter from "../Components/Footer";
 import BrandName from "../Components/BrandName";
 import GalleryMenu from "../Components/GalleryMenu";
 import SideMenu from "../Components/SideMenu";
+import useMediaQuery from "../Utils/MediaQuery";
 
 const HomeScreen = () => {
   const images: CarouselImageType[] = [
@@ -31,6 +32,13 @@ const HomeScreen = () => {
       imageName: "carousel-future.jpg",
     },
   ];
+
+  let dim = 0;
+  if (useMediaQuery("(min-width: 576px)")) dim = 1;
+  if (useMediaQuery("(min-width: 768px)")) dim = 2;
+  if (useMediaQuery("(min-width: 992px)")) dim = 3;
+  if (useMediaQuery("(min-width: 1200px)")) dim = 4;
+
   return (
     <div
       style={{
@@ -40,7 +48,12 @@ const HomeScreen = () => {
     >
       <ImageCarousel images={images} delay={2000}>
         <NavigationBar>
-          <BrandName text={"-\xA0Web\xA0Developer  "} delay={250} />
+          <BrandName
+            staticText={"Robert Takacs"}
+            breakLine={dim < 1}
+            animateText={"Web\xA0Developer  "}
+            delay={250}
+          />
           <SideMenu />
         </NavigationBar>
       </ImageCarousel>

@@ -16,9 +16,7 @@ const NavigationBar: React.FC<Props> = ({ children, isBlock }) => {
       style={isBlock ? { position: "relative", height: "auto" } : {}}
     >
       <Row className="h-100">
-        <Col xs={12} lg={6} className="brand">
-          {children}
-        </Col>
+        <Col className="brand">{children}</Col>
       </Row>
 
       {/*<div className="navbar-effect"></div>*/}

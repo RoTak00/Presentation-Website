@@ -1,15 +1,19 @@
 div.side-menu-button {
   position: absolute;
   right: 10px;
-  top: 0;
-  bottom: 0;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
   cursor: pointer;
-  aspect-ratio: 1/1; }
+  aspect-ratio: 1/1;
+  top: 15%;
+  bottom: 15%; }
+  @media (min-width: 576px) {
+    div.side-menu-button {
+      bottom: 2%;
+      top: 2%; } }
   div.side-menu-button img {
     width: 100%;
     height: 100%;
