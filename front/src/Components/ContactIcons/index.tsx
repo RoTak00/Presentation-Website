@@ -31,7 +31,7 @@ const ContactIcons = () => {
           </h2>
         </Col>
       </Row>
-      <Row className="contact-icons-wrapper" ref={iconsRef}>
+      <Row className="contact-icons-wrapper " ref={iconsRef}>
         <Col xs="4">
           <a
             href="https://github.com/RoTak00"

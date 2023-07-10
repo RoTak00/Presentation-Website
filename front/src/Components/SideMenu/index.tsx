@@ -21,7 +21,7 @@ const SideMenu: React.FC<Props> = ({ children }) => {
     },
     {
       name: "Contact",
-      link: "/contact",
+      link: "/#contact",
     },
   ];
 

@@ -11,61 +11,49 @@ type Props = {
   index: number;
 };
 const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
-  const projectRef = useRef(null);
-  const isIntersecting = useIsInViewport(projectRef);
-  const animationClasses = useFadeIn(
-    isIntersecting,
-    "slideIn",
-    index % 2 === 0 ? "left" : "right"
-  );
-
-  const tagAnimationClasses = useFadeIn(
-    isIntersecting,
-    "fadeIn",
-    "fadingInNormal"
-  );
-
-  const tagsTSX = isIntersecting ? project.tags?.map((tag, index) => (
-    <div className={"tag " + tagAnimationClasses} style={{ animationDelay: `${0.4 + (index * 0.2)}s` }}>{tag.tag_name}</div>
-  )) : null;
+  const tagsTSX = project.tags?.map((tag, index) => (
+    <div className={"tag "} style={{ animationDelay: `${0.4 + index * 0.2}s` }}>
+      {tag.tag_name}
+    </div>
+  ));
 
   const isSmallScreen = useMediaQuery("(max-width: 992px)");
   console.log(isSmallScreen);
   let projectImage = (
-    <div className={"project-page-image " + animationClasses} style={!isIntersecting ? { opacity: 0 } : {}}>
+    <div className={"project-page-image "}>
       <img src={project.image ?? ""} alt={project.title} />
-      {project.tags ? (<div className={"project-tags big "}>{tagsTSX}</div>) : null}
+      {project.tags ? (
+        <div className={"project-page-tags big "}>{tagsTSX}</div>
+      ) : null}
     </div>
   );
   let projectInfo = (
-    <div
-      className="project-page-info"
-      ref={projectRef}
-      key={"project-" + index}
-    >
+    <div className="project-page-info" key={"project-" + index}>
       <h3>{project.title}</h3>
       <p>{project.description}</p>
 
       <div className="links">
         {project.link_github ? (
           <a
-          href="/"
+            href="/"
             onClick={(e) => {
               e.preventDefault();
               projectAction(project.id as number, "click_page");
               window.open(project.link_github, "_blank");
             }}
-
           >
             More on GitHub!
           </a>
         ) : null}
         {project.link ? (
-          <a href="/" onClick={(e) => {
-            e.preventDefault();
-            projectAction(project.id as number, "click_page");
-            window.open(project.link, "_blank");
-          }} >
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              projectAction(project.id as number, "click_page");
+              window.open(project.link, "_blank");
+            }}
+          >
             Check it out!
           </a>
         ) : null}
@@ -74,7 +62,7 @@ const ProjectPageCell: React.FC<Props> = ({ project, index }) => {
   );
 
   return (
-    <div key={`project-${index}`} className="project-page-cell container">
+    <div key={`project-${index}`} className="project-page-cell">
       {index % 2 === 0 || isSmallScreen ? projectImage : projectInfo}
 
       {index % 2 === 0 || isSmallScreen ? projectInfo : projectImage}

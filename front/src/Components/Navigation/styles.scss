@@ -1,6 +1,6 @@
 .navbar-wrapper {
   background-color: #28083188;
-  width: 100%;
+  max-width: 100vw;
 
   box-sizing: content-box;
 
@@ -8,7 +8,8 @@
 
   position: absolute;
   top: 0;
-  width: 100vw;
+  left: 0;
+  right: 0;
 
   @media (min-width: 992px) {
     padding: 10px 0px;
@@ -39,7 +40,7 @@
   @media (min-width: 768px) {
     font-size: 35px;
     justify-content: start;
-    margin-left: 10px;
+    padding-left: 10px;
   }
 
   @media (min-width: 992px) {

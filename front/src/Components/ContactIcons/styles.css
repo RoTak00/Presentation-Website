@@ -6,7 +6,7 @@
   .contact-icons-title-row h2 {
     text-align: center;
     font-size: 4rem;
-    font-family: 'Videotype', sans-serif; }
+    font-family: "Videotype", sans-serif; }
     @media (max-width: 992px) {
       .contact-icons-title-row h2 {
         font-size: 2rem; } }
@@ -23,5 +23,8 @@
     .contact-icons-wrapper img {
       height: 50px;
       width: 50px; } }
+
+.row {
+  margin-right: 0 !important; }
 
 /*# sourceMappingURL=styles.css.map */
