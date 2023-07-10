@@ -65,24 +65,6 @@ const ProjectMenu = () => {
     projectAction(projects[modalIndex].id as number, "view_home");
   };
 
-  const titleRowRef = useRef(null);
-
-  const isTitleIntersecting = useIsInViewport(titleRowRef);
-  const titleAnimationClasses = useFadeIn(
-    isTitleIntersecting,
-    "toFadeIn",
-    "fadingInSimple zoomBigSmall"
-  );
-
-  const descriptionRowRef = useRef(null);
-
-  const isDescriptionIntersecting = useIsInViewport(descriptionRowRef);
-  const descriptionAnimationClasses = useFadeIn(
-    isDescriptionIntersecting,
-    "toFadeIn",
-    "fadingInSimple"
-  );
-
   return (
     <Row className="project-menu-row">
       {projects?.map((el, index, arr) => (

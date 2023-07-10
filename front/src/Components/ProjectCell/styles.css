@@ -1,41 +1,21 @@
 .project-menu-cell {
   position: relative;
   background-color: #280831;
-  cursor: pointer;
-  height: 75vh;
   display: flex;
-  justify-content: center;
-  align-items: center; }
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  cursor: pointer; }
   @media (min-width: 992px) {
     .project-menu-cell {
-      height: 30vw; } }
+      height: 30vw; }
+      .project-menu-cell > img {
+        height: 100%; } }
   .project-menu-cell > img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
     object-position: center; }
-  .project-menu-cell > .project-menu-hover {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    bottom: 0;
-    left: 15%;
-    right: 15%;
-    height: 10%;
-    color: #ffffff;
-    font-family: "Videotype", sans-serif;
-    font-size: 1.5rem;
-    opacity: 0;
-    animation: fadeInHover 0.15s ease both; }
-    @media (max-width: 992px) {
-      .project-menu-cell > .project-menu-hover {
-        font-size: 1rem; } }
-@keyframes fadeInHover {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 100%; } }
+
 .project-menu-tags {
   display: flex;
   position: absolute;
@@ -66,105 +46,11 @@
   top: 0;
   left: 0;
   right: 0;
+  padding: 5px 10%;
   text-align: center;
   color: #fefefe;
   font-size: 30px;
-  padding-left: 20px;
   font-weight: 500;
   background-color: #28083188; }
-
-.project-modal .modal-content {
-  background-color: #eeeeeebb !important; }
-.project-modal .project-modal-title {
-  position: relative;
-  padding-top: 2%;
-  padding-bottom: 1%;
-  font-family: "Videotype", sans-serif;
-  text-align: center;
-  width: 100%;
-  height: 6rem;
-  background-color: #280831; }
-  .project-modal .project-modal-title > h2 {
-    font-size: 3rem;
-    color: #eeeeee; }
-    @media (max-width: 992px) {
-      .project-modal .project-modal-title > h2 {
-        font-size: 1rem; } }
-.project-modal .project-modal-description {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .project-modal .project-modal-description.tags {
-    --bs-modal-padding: 0rem !important; }
-  .project-modal .project-modal-description > div {
-    width: 70%;
-    font-size: 1.2rem;
-    text-align: justify; }
-    @media (max-width: 992px) {
-      .project-modal .project-modal-description > div {
-        width: 90%;
-        font-size: 0.9rem; } }
-.project-modal .project-modal-image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  .project-modal .project-modal-image-wrapper > div {
-    margin-top: 1rem;
-    width: 60%;
-    height: 50%;
-    background-color: #280831; }
-    .project-modal .project-modal-image-wrapper > div > img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center; }
-.project-modal .project-modal-buttons {
-  margin: 1em 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  @media (max-width: 992px) {
-    .project-modal .project-modal-buttons {
-      flex-direction: column; } }
-.project-modal .button-checkitout {
-  width: 80%;
-  cursor: pointer;
-  --bs-btn-bg: #280831 !important;
-  --bs-btn-border-color: #190152 !important;
-  --bs-btn-hover-bg: #4b0f5c !important;
-  --bs-btn-hover-border-color: #190152 !important;
-  --bs-btn-active-bg: #4b0f5c !important;
-  --bs-btn-active-border-color: #3200a8 !important; }
-  @media (min-width: 992px) {
-    .project-modal .button-checkitout:nth-of-type(1) {
-      margin-right: 20px; }
-    .project-modal .button-checkitout:nth-of-type(2) {
-      margin-left: 20px; } }
-  @media (max-width: 992px) {
-    .project-modal .button-checkitout:nth-of-type(1) {
-      margin-bottom: 5px; }
-    .project-modal .button-checkitout:nth-of-type(2) {
-      margin-top: 5px; } }
-.project-modal .button-close {
-  cursor: pointer;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 38px;
-  top: calc(3rem - 19px);
-  right: calc(3rem - 19px);
-  width: 38px;
-  border: 3px solid darkred;
-  border-radius: 10px;
-  color: darkred;
-  font-size: 25px;
-  transition: color 0.2s, background-color 0.2s, border 0.3s;
-  font-weight: bolder; }
-  .project-modal .button-close:hover {
-    color: white;
-    background-color: darkred;
-    border-color: white;
-    transition: color 0.2s, background-color 0.2s, border 0.3s; }
 
 /*# sourceMappingURL=styles.css.map */

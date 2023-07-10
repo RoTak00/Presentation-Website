@@ -33,9 +33,7 @@
       padding-left: 10px; } }
   @media (min-width: 992px) {
     .brand {
-      font-size: 40px; } }
-  @media (min-width: 1200px) {
-    .brand {
-      font-size: 40px; } }
+      font-size: 40px;
+      padding-left: 20px; } }
 
 /*# sourceMappingURL=styles.css.map */
