@@ -6,6 +6,12 @@
   position: absolute;
   top: 0;
   width: 100vw; }
+  @media (min-width: 992px) {
+    .navbar-wrapper {
+      padding: 10px 0px; } }
+  @media (min-width: 1200px) {
+    .navbar-wrapper {
+      padding: 20px 0px; } }
 
 .brand {
   display: flex;
