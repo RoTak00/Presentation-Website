@@ -46,7 +46,12 @@ const ProjectCell: React.FC<Props> = ({
       >
         <img src={data.image ?? ""} alt={data.title}></img>
 
-        <div className={"project-menu-title"}>{data.title}</div>
+        <div className={"project-menu-info"}>
+          <div className={"title"}>{data.title}</div>
+          <div className={"description" + (showModal ? " " : " closed")}>
+            {data.description}
+          </div>
+        </div>
 
         {data.tags ? (
           <div className={"project-menu-tags"}>{tagsTSX}</div>
