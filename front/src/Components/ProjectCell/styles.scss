@@ -9,19 +9,34 @@
 
   cursor: pointer;
 
-  @media (min-width: 992px) {
-    height: 30vw;
+  & > img {
+    width: 100%;
+    aspect-ratio: 6/7;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @media (min-width: 576px) {
+    height: 85vh;
 
     & > img {
       height: 100%;
     }
   }
 
-  & > img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    object-position: center;
+  @media (min-width: 576px) and (min-height: 768px) {
+    height: 50vh;
+  }
+
+  @media (min-width: 992px) {
+    height: 70vh;
+  }
+
+  @media (min-width: 1200px) {
+    height: 30vw;
+    & > img {
+      height: 100%;
+    }
   }
 }
 
@@ -32,7 +47,8 @@
   left: 0;
   right: 0;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
   padding: 10px;
 
   background-color: #28083188;
@@ -49,10 +65,24 @@
     border-radius: 1rem;
     font-family: "Videotype", sans-serif;
     font-size: 1em;
+  }
 
-    @media (max-width: 992px) {
-      font-size: 0.75em;
+  @media (min-width: 576px) {
+    justify-content: start;
+  }
+
+  @media (min-width: 576px) and (min-height: 768px) {
+    padding: 20px;
+    justify-content: center;
+    & > .tag {
+      padding: 0.6rem;
+      font-size: 1.1rem;
+      margin: 0.25rem 0.75rem 0.25rem 0;
     }
+  }
+
+  @media (min-width: 992px) {
+    justify-content: start;
   }
 }
 
@@ -73,10 +103,6 @@
 
     font-weight: 500;
     transition: padding-bottom 0.5s;
-    &:hover:has(+ .description.closed) {
-      padding-bottom: 15px;
-      transition: padding-bottom 0.2s;
-    }
   }
 
   & .description {
@@ -91,11 +117,45 @@
     &:not(.closed) {
       max-height: 250px;
       padding-bottom: 100px;
-      transition: max-height 1s, padding-bottom 1s;
+      transition: max-height 1s, padding-bottom 1s, padding-top 1s;
     }
     &.closed {
       max-height: 0px;
-      transition: max-height 1s, padding-bottom 1s;
+      transition: max-height 1s, padding-bottom 1s, padding-top 1s;
+    }
+  }
+
+  @media (min-width: 576px) and (min-height: 768px) {
+    & .title {
+      padding: 10px 10%;
+      font-size: 35px;
+    }
+
+    & .description {
+      line-height: 1.5;
+      font-size: 1.35rem;
+
+      &:not(.closed) {
+        max-height: 350px;
+        padding-bottom: 100px;
+        padding-top: 100px;
+        transition: max-height 1s, padding-bottom 1s, padding-top 1s;
+      }
+      &.closed {
+        max-height: 0px;
+        transition: max-height 1s, padding-bottom 1s, padding-top 1s;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    & .title {
+      padding: 25px 10% 25px 10%;
+      font-size: 40px;
+    }
+
+    & .description {
+      font-size: 1.5rem;
     }
   }
 }
