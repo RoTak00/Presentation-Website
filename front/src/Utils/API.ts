@@ -24,7 +24,9 @@ const getProjects = async (limit?: number) => {
     const response = await axios.get(
       `${API_PATH}/projects${limit ? `/${limit}` : ""}`
     );
-    return response;
+
+    console.log(response.data);
+    return response.data;
   } catch (error) {
     console.error("Error getting projects:", error);
     return null;
@@ -44,17 +46,17 @@ const getProjectsPaginated = async (limit: number, page: number) => {
   }
 };
 
-
-const projectAction = async(id: number, action: string) => {
+const projectAction = async (id: number, action: string) => {
   try {
-    const response = await axios.post(
-      `${API_PATH}/stats/projects`, {id:id, action:action}
-    );
+    const response = await axios.post(`${API_PATH}/stats/projects`, {
+      id: id,
+      action: action,
+    });
     return response;
   } catch (error) {
     console.error("Error updating project stats:", error);
     return null;
   }
-}
+};
 
 export { postUserMessage, getProjects, getProjectsPaginated, projectAction };

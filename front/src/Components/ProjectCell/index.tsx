@@ -1,5 +1,5 @@
 import { Button, Col, Modal, Row } from "react-bootstrap";
-import { ProjectType } from "../../Utils/Types";
+import { ProjectType, RecursivePartial } from "../../Utils/Types";
 import "./styles.css";
 import { useRef, useState } from "react";
 import useIsInViewport from "../../Utils/IsInViewport";
@@ -7,7 +7,7 @@ import useFadeIn from "../../Utils/fadeIn";
 import { projectAction } from "../../Utils/API";
 
 type Props = {
-  data: ProjectType;
+  data: RecursivePartial<ProjectType>;
   showModal: boolean;
   handleModalClose: () => void;
   handleModalOpened: () => void;
@@ -25,8 +25,10 @@ const ProjectCell: React.FC<Props> = ({
   cellIndex,
   cellArrayLength,
 }) => {
-  const tagsTSX = data.tags?.map((tag) => (
-    <div className="tag">{tag.tag_name}</div>
+  const tagsTSX = data.tags?.map((tag, index) => (
+    <div className="tag" key={data.id + "-" + index}>
+      {tag.tag_name}
+    </div>
   ));
 
   const [isHovering, setIsHovering] = useState(false);

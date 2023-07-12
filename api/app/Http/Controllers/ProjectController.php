@@ -24,10 +24,19 @@ class ProjectController extends Controller
     public function api_get($limit = null)
     {
         $projects = null;
-        if($limit == null)
-            $projects = Project::where('status', 'active')->orderBy('ordering', 'desc')->get();
-        else
-            $projects = Project::where('status', 'active')->orderBy('ordering', 'desc')->take($limit)->get();
+        try {
+            if ($limit == null)
+                $projects = Project::where('status', 'active')->orderBy('ordering', 'desc')->get();
+            else
+                $projects = Project::where('status', 'active')->orderBy('ordering', 'desc')->take($limit)->get();
+        }
+        catch(Exception $e){
+            $timestamp = time();
+            $status = "error";
+            $message = $e->getMessage();
+
+            return response()->json(['timestamp' => $timestamp, 'status' => $status, 'message' => $message]);
+        }
 
         foreach($projects as $item)
         {
@@ -35,7 +44,10 @@ class ProjectController extends Controller
             $item->tags = ProjectTag::where('project_id', $item->id)->orderBy("tag_name", 'asc')->get();
         }
 
-        return response()->json(['data'=>$projects, 'count'=>count($projects)]);
+        $timestamp = time();
+        $message = "success";
+
+        return response()->json(['data'=>$projects, 'timestamp' => $timestamp, 'status' => "success"]);
 
     }
 

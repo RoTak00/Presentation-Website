@@ -1,5 +1,5 @@
 import { Row } from "react-bootstrap";
-import { ProjectType } from "../../Utils/Types";
+import { ProjectType, RecursivePartial } from "../../Utils/Types";
 import ProjectCell from "../ProjectCell";
 import "./styles.css";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -8,7 +8,9 @@ import useIsInViewport from "../../Utils/IsInViewport";
 import useFadeIn from "../../Utils/fadeIn";
 
 const ProjectMenu = () => {
-  const [projects, setProjects] = useState<ProjectType[] | null>([
+  const [projects, setProjects] = useState<
+    RecursivePartial<ProjectType>[] | null
+  >([
     {
       image: "images/loading.png",
       title: "Loading...",
@@ -32,15 +34,16 @@ const ProjectMenu = () => {
   ]);
 
   const loadProjects = useCallback(async () => {
-    let projects = await getProjects(4).then((res) => res?.data);
-    if (!projects) {
-      console.log("ERROR. CANNOT LOAD PROJECTS");
+    let projects_response = await getProjects(4);
+
+    if (projects_response.status === "error") {
+      console.error(projects_response.message);
       return;
     }
 
     let numeric_array_projects = [];
-    for (var item in projects.data) {
-      numeric_array_projects.push(projects.data[item]);
+    for (var item in projects_response.data) {
+      numeric_array_projects.push(projects_response.data[item]);
     }
     setProjects(numeric_array_projects);
     setProjectsLoaded(true);
