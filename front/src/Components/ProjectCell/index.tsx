@@ -44,7 +44,11 @@ const ProjectCell: React.FC<Props> = ({
         }}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        onClick={() => handleModalOpened()}
+        onClick={() => {
+          handleModalOpened();
+          if (data.id) projectAction(data.id, "view_home");
+          return;
+        }}
       >
         <img src={data.image ?? ""} alt={data.title}></img>
 
@@ -52,6 +56,25 @@ const ProjectCell: React.FC<Props> = ({
           <div className={"title"}>{data.title}</div>
           <div className={"description" + (showModal ? " " : " closed")}>
             {data.description}
+            {data.link ? (
+              <>
+                &nbsp;
+                <a
+                  href={data.link}
+                  onClick={() => {
+                    if (data.id) projectAction(data.id, "click_home");
+                    return;
+                  }}
+                >
+                  Project Link
+                </a>
+              </>
+            ) : null}
+            {data.link_github ? (
+              <>
+                &nbsp;<a href={data.link_github}>Project Github</a>
+              </>
+            ) : null}
           </div>
         </div>
 

@@ -91,23 +91,11 @@ const ContactMenu = () => {
       buttonDisabled = true;
   }
 
-  const titleRowRef = useRef(null);
-
-  const isTitleIntersecting = useIsInViewport(titleRowRef);
-
-  const titleAnimationClasses = useFadeIn(
-    isTitleIntersecting,
-    "toFadeIn",
-    "fadingInSimple zoomBigSmall"
-  );
-
   return (
     <section id="contact">
       <Row className="contact-title-row">
         <Col xs="12">
-          <h2 ref={titleRowRef} className={titleAnimationClasses}>
-            Let's get in touch!
-          </h2>
+          <h2>Let's get in touch!</h2>
         </Col>
       </Row>
       <Row className={`contact-form-wrapper`}>

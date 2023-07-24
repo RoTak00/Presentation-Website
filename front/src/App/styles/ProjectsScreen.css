@@ -5,7 +5,8 @@
   .projects-title h2 {
     text-align: center;
     font-size: 4rem;
-    font-family: 'Videotype', sans-serif;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 1.5rem; }
 
@@ -14,6 +15,7 @@
   align-items: center;
   justify-content: center; }
   .projects-title-description p {
+    font-family: "Lato", sans-serif;
     font-size: 2rem;
     margin-bottom: 2.5rem;
     color: #280831;

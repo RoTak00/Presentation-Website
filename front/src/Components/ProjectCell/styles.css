@@ -47,7 +47,8 @@
     background-color: #ffffffbb;
     color: #280831;
     border-radius: 1rem;
-    font-family: "Videotype", sans-serif;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600;
     font-size: 1em; }
   @media (min-width: 576px) {
     .project-menu-tags {

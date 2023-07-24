@@ -5,11 +5,12 @@
   justify-content: center; }
   .contact-icons-title-row h2 {
     text-align: center;
-    font-size: 4rem;
-    font-family: "Videotype", sans-serif; }
-    @media (max-width: 992px) {
+    font-size: 40px;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 600; }
+    @media (min-width: 1200px) {
       .contact-icons-title-row h2 {
-        font-size: 2rem; } }
+        font-size: 55px; } }
 
 .contact-icons-wrapper {
   display: flex;
@@ -19,12 +20,7 @@
   .contact-icons-wrapper > div {
     display: flex;
     justify-content: center; }
-  @media (max-width: 992px) {
-    .contact-icons-wrapper img {
-      height: 50px;
-      width: 50px; } }
-
-.row {
-  margin-right: 0 !important; }
+  .contact-icons-wrapper img {
+    padding: 20px; }
 
 /*# sourceMappingURL=styles.css.map */

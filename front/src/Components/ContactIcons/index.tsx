@@ -26,13 +26,11 @@ const ContactIcons = () => {
     <>
       <Row className="contact-icons-title-row">
         <Col xs="12">
-          <h2 ref={titleRef} className={titleFadeInClasses}>
-            Find me on these platforms!
-          </h2>
+          <h2>Find me on these platforms!</h2>
         </Col>
       </Row>
       <Row className="contact-icons-wrapper " ref={iconsRef}>
-        <Col xs="4">
+        <Col xs="12" md="4">
           <a
             href="https://github.com/RoTak00"
             target="_blank"
@@ -43,7 +41,7 @@ const ContactIcons = () => {
             <img src="/icons/git.png" alt="Github" />
           </a>
         </Col>
-        <Col xs="4">
+        <Col xs="12" md="4">
           <a
             href="https://instagram.com/rotak__/"
             target="_blank"
@@ -54,7 +52,7 @@ const ContactIcons = () => {
             <img src="/icons/ig.png" alt="Instagram" />
           </a>
         </Col>
-        <Col xs="4">
+        <Col xs="12" md="4">
           <a
             href="https://www.linkedin.com/in/robertrotaktakacs/"
             target="_blank"
